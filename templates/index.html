@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}{{ cfg.name }} — Engineering Portfolio{% endblock %}
+{% block content %}
+
+<header class="masthead">
+  <div class="wrap">
+    <p class="eyebrow">Engineering Portfolio</p>
+    <h1>{{ cfg.name }}</h1>
+    <p class="role">{{ cfg.role }}</p>
+    <p class="thesis">{{ cfg.thesis }}</p>
+    <ul class="contact">
+      <li>{{ cfg.location }}</li>
+      <li><a href="mailto:{{ cfg.email }}">{{ cfg.email }}</a></li>
+      {% if cfg.phone %}<li>{{ cfg.phone }}</li>{% endif %}
+      <li><a href="{{ cfg.linkedin }}">LinkedIn</a></li>
+      {% if pdf_href %}<li><a href="{{ pdf_href }}">Download PDF</a></li>{% endif %}
+    </ul>
+  </div>
+</header>
+
+<main class="wrap">
+  <p class="intro">{{ cfg.intro }}</p>
+
+  <ol class="timeline">
+    {% for p in projects %}
+    <li class="node {% if p.status == 'active' %}is-active{% endif %}">
+      <div class="spine" aria-hidden="true">
+        <span class="bubble"><span class="tag">{{ p.tag }}</span></span>
+      </div>
+      <article class="card">
+        <p class="period">{{ p.period }}{% if p.status == 'active' %} <span class="live">active</span>{% endif %}</p>
+        <h2><a href="{{ p.slug }}.html">{{ p.title }}</a></h2>
+        <p class="subtitle">{{ p.subtitle }}</p>
+        <p class="role-line">{{ p.role }} · {{ p.org }}</p>
+        <p class="summary">{{ p.summary }}</p>
+        {% if p.results %}
+        <dl class="results">
+          {% for r in p.results %}<div><dt>{{ r.label }}</dt><dd>{{ r.value }}</dd></div>{% endfor %}
+        </dl>
+        {% endif %}
+        {% if p.skills %}
+        <ul class="skills">{% for s in p.skills %}<li>{{ s }}</li>{% endfor %}</ul>
+        {% endif %}
+        <a class="more" href="{{ p.slug }}.html">Read the design rationale &rarr;</a>
+      </article>
+    </li>
+    {% endfor %}
+  </ol>
+</main>
+
+<footer class="wrap foot">
+  <p>{{ cfg.name }} · {{ cfg.email }}{% if cfg.phone %} · {{ cfg.phone }}{% endif %}</p>
+</footer>
+
+{% endblock %}

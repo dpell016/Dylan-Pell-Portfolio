@@ -1,0 +1,33 @@
+name: Dylan Encarnacion Pell
+role: Mechanical Engineering · Liquid Propulsion & Fluid Systems
+location: Los Angeles, CA
+email: d.pell016@gmail.com
+linkedin: https://www.linkedin.com/in/dylan-pell
+# phone intentionally omitted from this public portfolio; it stays on the resume only.
+site_url: ""   # PDF cover URL. Fill in (https://dylanpellportfolio.com) once the
+               # domain resolves and HTTPS works, then rebuild --pdf. Left blank so the
+               # PDF never shows a link that does not yet load.
+
+# Custom domain for GitHub Pages. build.py writes this to docs/CNAME on every build,
+# so the domain survives the rebuild that wipes docs/. Bare host, no https://.
+domain: dylanpellportfolio.com
+
+# One-sentence thesis shown at the top of the site and PDF.
+thesis: >
+  I design, build, and test liquid rocket propulsion hardware. My work has moved from
+  single components, to owning a subsystem that flew, to architecting a full cryogenic
+  fluid system from a blank sheet.
+
+# Shown under the thesis as a short framing paragraph.
+intro: >
+  This portfolio is organized as a timeline. Each project records the problem, the
+  constraints, the reasoning behind the design decisions, and how the result was
+  validated. The through line is a progression from component design, to subsystem
+  ownership on a vehicle that flew, to full-system architecture on a cryogenic stand.
+
+# PDF options
+pdf:
+  filename: Dylan_Pell_Portfolio.pdf
+  # Projects listed here (by slug) are included in the PDF, in this order.
+  # Leave empty to include every project marked `featured: true`.
+  include: []

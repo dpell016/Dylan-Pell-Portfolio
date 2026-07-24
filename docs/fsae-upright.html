@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Formula SAE Suspension Upright — Dylan Encarnacion Pell</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="project-page">
+
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="back" href="index.html">&larr; Dylan Encarnacion Pell</a>
+    <span class="topbar-tag">MD-01</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1 class="proj-title">Formula SAE Suspension Upright</h1>
+  <p class="proj-sub">Three design iterations for manufacturability</p>
+
+  <dl class="titleblock">
+    <div><dt>Role</dt><dd>Suspension Engineer</dd></div>
+    <div><dt>Organization</dt><dd>Formula SAE, UC Riverside</dd></div>
+    <div><dt>Period</dt><dd>2024 - 2025</dd></div>
+    <div><dt>Tag</dt><dd>MD-01</dd></div>
+  </dl>
+
+  
+  <div class="ph hero-ph"><span>Drop a photo at</span><code>assets/images/fsae-upright/hero.jpg</code></div>
+  
+
+  
+
+  <div class="prose"><h2 id="the-problem">The problem</h2>
+<p>The upright carries wheel loads into the suspension and locates the hub, so it needs
+tight tolerances on its critical features. The first design achieved that geometry but
+was expensive to make: complex features and awkward tool access meant more machining
+operations than the part warranted.</p>
+<p>A part that cannot be produced accurately and repeatably with the equipment actually
+available is not a finished design, regardless of how it performs in CAD.</p>
+<h2 id="design-decisions">Design decisions</h2>
+<p>Across three iterations I worked the geometry against the manufacturing process rather
+than only against the load case. The levers that mattered:</p>
+<ul>
+<li><strong>Reducing the number of setups.</strong> Every time a part is unclamped and re-fixtured, cost
+  goes up and a new tolerance stack is introduced between features cut in different
+  orientations. Consolidating features into fewer orientations improves both cost and
+  achievable accuracy.</li>
+<li><strong>Improving tool access.</strong> Features that force long, thin tooling or unusual approach
+  angles machine slowly and chatter. Opening up access let standard tooling reach the
+  features.</li>
+<li><strong>Simplifying geometry that was not carrying load.</strong> Complexity that existed for its
+  own sake was removed; complexity that carried wheel loads stayed.</li>
+</ul>
+<p>The net result was roughly a 25% improvement in manufacturability by reduced machining
+complexity and better feature accessibility, while preserving the precision required at
+the hub and mounting interfaces.</p>
+<h2 id="what-i-would-do-differently">What I would do differently</h2>
+<p>I would involve whoever is cutting the part in the first iteration rather than the
+second. Most of what I found in cycles two and three, a machinist would have flagged in
+five minutes looking at cycle one. Design for manufacture works far better as a
+conversation than as a solo review.</p></div>
+
+  
+
+  
+  <ul class="skills"><li>SolidWorks</li><li>Design for manufacture</li><li>Machining processes</li><li>Iterative design</li></ul>
+  
+
+  <nav class="pager">
+    <a href="drill-jig.html">&larr; Bulkhead Drill Jig</a>
+    <a href="lspace.html">NASA L&#39;SPACE Mission Concept Academy &rarr;</a>
+  </nav>
+</main>
+
+<footer class="wrap foot">
+  <p>Dylan Encarnacion Pell · d.pell016@gmail.com</p>
+</footer>
+
+<script src="assets/vendor/katex/katex.min.js"></script>
+<script src="assets/vendor/katex/auto-render.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false }
+      ],
+      throwOnError: false
+    });
+  });
+</script>
+</body>
+</html>

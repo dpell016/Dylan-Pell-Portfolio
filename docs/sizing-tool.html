@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fluid System Sizing &amp; Trade Study Tool — Dylan Encarnacion Pell</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="project-page">
+
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="back" href="index.html">&larr; Dylan Encarnacion Pell</a>
+    <span class="topbar-tag">SW-01</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1 class="proj-title">Fluid System Sizing &amp; Trade Study Tool</h1>
+  <p class="proj-sub">Python / MATLAB design automation</p>
+
+  <dl class="titleblock">
+    <div><dt>Role</dt><dd>Author</dd></div>
+    <div><dt>Organization</dt><dd>Highlander Space Program, UC Riverside</dd></div>
+    <div><dt>Period</dt><dd>2025 - Present</dd></div>
+    <div><dt>Tag</dt><dd>SW-01</dd></div>
+  </dl>
+
+  
+  <div class="ph hero-ph"><span>Drop a photo at</span><code>assets/images/sizing-tool/hero.jpg</code></div>
+  
+
+  
+
+  <div class="prose"><h2 id="the-problem">The problem</h2>
+<p>Every change to a feed system propagates. Change a tube size and the velocity, Reynolds
+number, friction factor, and pressure drop all move, which changes the tank pressure you
+need, which changes the regulator setpoint and the structural requirement on the tank.
+Doing that by hand takes long enough that in practice you stop exploring alternatives and
+commit to the first workable answer.</p>
+<p>I wanted the team to be able to ask "what if this line were larger" and get an answer
+immediately, so that design decisions came from comparison rather than from whichever
+configuration someone happened to calculate first.</p>
+<h2 id="what-it-computes">What it computes</h2>
+<p>Given propellant properties, target mass flow, and a proposed line and tank geometry, the
+tool returns total pressure drop, flow rates, and line and tank sizing.</p>
+<p>Flow velocity from continuity:</p>
+<p><div class="math-display">$$v = \frac{4Q}{\pi D^{2}}$$</div></p>
+<p>Reynolds number to establish the flow regime:</p>
+<p><div class="math-display">$$Re = \frac{\rho v D}{\mu}$$</div></p>
+<p>Friction factor from the Swamee-Jain explicit approximation, which avoids iterating the
+implicit Colebrook equation:</p>
+<p><div class="math-display">$$f = \frac{0.25}{\left[\log_{10}\!\left(\dfrac{\varepsilon}{3.7 D} + \dfrac{5.74}{Re^{0.9}}\right)\right]^{2}}$$</div></p>
+<p>Major losses along each run:</p>
+<p><div class="math-display">$$\Delta p_{\text{major}} = f \, \frac{L}{D} \, \frac{\rho v^{2}}{2}$$</div></p>
+<p>Minor losses through valves, elbows, and fittings:</p>
+<p><div class="math-display">$$\Delta p_{\text{minor}} = K \, \frac{\rho v^{2}}{2}$$</div></p>
+<p>Summed to a system total, which sets the tank pressure required to deliver the design
+inlet condition at the injector:</p>
+<p><div class="math-display">$$p_{\text{tank}} = p_{\text{injector}} + \sum \Delta p$$</div></p>
+<h2 id="why-it-mattered">Why it mattered</h2>
+<p>The tool turned line sizing into a trade study rather than a guess. It is also what made
+the diagnosis on <a href="clementine.html">Project Clementine</a> immediate: when the measured GN2
+pressure drop came in high, the model said what the drop <em>should</em> have been for that
+geometry, which pointed straight at undersized tubing instead of leaving us to hunt.</p>
+<h2 id="what-i-would-do-differently">What I would do differently</h2>
+<p>I would build compressible flow handling in from the start. The incompressible relations
+are correct for the liquid propellant runs, but the high-pressure GN2 side is better
+described with compressibility and choked flow limits accounted for,</p>
+<p><div class="math-display">$$\frac{p^{*}}{p_{0}} = \left(\frac{2}{\gamma+1}\right)^{\frac{\gamma}{\gamma-1}} \approx 0.528 \quad (\gamma = 1.4)$$</div></p>
+<p>so that the tool covers the pressurant side with the same rigor as the propellant side.</p></div>
+
+  
+
+  
+  <ul class="skills"><li>Python</li><li>MATLAB</li><li>Fluid mechanics</li><li>Trade studies</li><li>Design automation</li></ul>
+  
+
+  <nav class="pager">
+    <a href="poseidon.html">&larr; Project Poseidon</a>
+    <a href="drill-jig.html">Bulkhead Drill Jig &rarr;</a>
+  </nav>
+</main>
+
+<footer class="wrap foot">
+  <p>Dylan Encarnacion Pell · d.pell016@gmail.com</p>
+</footer>
+
+<script src="assets/vendor/katex/katex.min.js"></script>
+<script src="assets/vendor/katex/auto-render.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false }
+      ],
+      throwOnError: false
+    });
+  });
+</script>
+</body>
+</html>

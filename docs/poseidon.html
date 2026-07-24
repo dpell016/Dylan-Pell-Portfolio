@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project Poseidon — Dylan Encarnacion Pell</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="project-page">
+
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="back" href="index.html">&larr; Dylan Encarnacion Pell</a>
+    <span class="topbar-tag">FS-02</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1 class="proj-title">Project Poseidon</h1>
+  <p class="proj-sub">N₂O / Ethanol Liquid Bipropellant Rocket</p>
+
+  <dl class="titleblock">
+    <div><dt>Role</dt><dd>Lead Fluid Systems Engineer</dd></div>
+    <div><dt>Organization</dt><dd>Highlander Space Program, UC Riverside</dd></div>
+    <div><dt>Period</dt><dd>2025 - 2026</dd></div>
+    <div><dt>Tag</dt><dd>FS-02</dd></div>
+  </dl>
+
+  
+  <div class="ph hero-ph"><span>Drop a photo at</span><code>assets/images/poseidon/hero.jpg</code></div>
+  
+
+  
+  <dl class="results big">
+    <div><dt>Competition result</dt><dd>1st place, Most Efficient Liquid Engine</dd></div><div><dt>Event</dt><dd>2025 FAR-OUT Advanced Propulsion Rocketry Competition</dd></div><div><dt>Flight altitude</dt><dd>7,340 ft</dd></div>
+  </dl>
+  
+
+  <div class="prose"><h2 id="the-problem">The problem</h2>
+<p>Poseidon was UC Riverside's first liquid bipropellant rocket. Nothing existed to inherit:
+no prior feed system, no validated pressure vessel, no established test procedure. As
+Lead Fluid Systems Engineer I owned the pressure vessel and the integrated fuel and
+oxidizer feed system, from analysis through fabrication and test.</p>
+<h2 id="constraints">Constraints</h2>
+<ul>
+<li><strong>First of its kind for the program.</strong> No internal heritage hardware or prior data to
+  design against.</li>
+<li><strong>Competition deadline.</strong> A fixed date that testing had to be complete before.</li>
+<li><strong>Student budget and shop access.</strong> Design had to be manufacturable with the machining
+  and assembly capability actually available to us.</li>
+<li><strong>Safety margin on a pressurized structure</strong> with people standing near it.</li>
+</ul>
+<h2 id="design-decisions">Design decisions</h2>
+<h3 id="why-nitrous-oxide-simplified-the-pressurization-problem">Why nitrous oxide simplified the pressurization problem</h3>
+<p>N₂O is self-pressurizing. At room temperature its vapor pressure sits near 700 to 750
+psi, so the propellant supplies its own tank pressure without a separate pressurant
+system. For a first liquid vehicle this removed an entire subsystem and let the team
+concentrate on the engine, the structure, and the feed path.</p>
+<p>The tradeoff is that vapor pressure is strongly temperature dependent, so tank pressure,
+and therefore engine performance, varies with ambient conditions on test day. That
+sensitivity is the reason our next vehicle moved to a separately pressurized
+architecture, which became <a href="clementine.html">Project Clementine</a>.</p>
+<h3 id="sizing-the-pressure-vessel">Sizing the pressure vessel</h3>
+<p>The vessel was analyzed as a thin-walled cylinder, valid where the radius to thickness
+ratio is greater than about 10. Under internal pressure the wall carries a hoop stress
+and an axial stress,</p>
+<p><div class="math-display">$$\sigma_{h} = \frac{p r}{t}, \qquad \sigma_{a} = \frac{p r}{2 t}$$</div></p>
+<p>Hoop stress is twice axial stress, so the hoop direction governs and sets the required
+wall thickness,</p>
+<p><div class="math-display">$$t \;\ge\; \frac{p_{\text{design}} \, r}{\sigma_{\text{allow}}},
+   \qquad \sigma_{\text{allow}} = \frac{\sigma_{y}}{FS}$$</div></p>
+<p>Design pressure was set from the maximum expected operating pressure with margin applied
+above it, rather than from nominal operating pressure, so that the structure is sized for
+the worst credible case rather than the intended one. The combined stress state was
+checked against yield using the von Mises criterion,</p>
+<p><div class="math-display">$$\sigma_{v} = \sqrt{\sigma_{h}^{2} - \sigma_{h}\sigma_{a} + \sigma_{a}^{2}}$$</div></p>
+<p>Material selection traded strength to weight against weldability and oxidizer
+compatibility, and the geometry was iterated in CAD against what the shop could actually
+produce and inspect.</p>
+<h3 id="designing-the-feed-path">Designing the feed path</h3>
+<p>The feed system had to deliver both propellants to the engine at the correct flow and
+pressure, sequence safely through fill and fire, and seal reliably. Line and orifice
+sizing followed the same incompressible relations used across the program,</p>
+<p><div class="math-display">$$\dot{m} = C_d \, A \sqrt{2 \rho \, \Delta p}$$</div></p>
+<p>with major and minor losses accumulated along each run to confirm the engine saw its
+design inlet condition rather than whatever the plumbing happened to deliver.</p>
+<h2 id="what-i-built">What I built</h2>
+<p>The pressure vessel, co-designed and fabricated: structural analysis, CAD iteration, and
+coordination with manufacturing until it was real hardware. Then the integrated fuel and
+oxidizer feed system, assembling and validating the feed lines, valves, and interfaces
+that connected tanks to engine.</p>
+<h2 id="validation">Validation</h2>
+<p>Testing followed a deliberate ladder, each step qualifying the next:</p>
+<ol>
+<li><strong>Leak and pressure checks</strong> on the assembled system, to prove sealing before
+   introducing propellant.</li>
+<li><strong>Cold flow testing</strong>, flowing propellant through the complete feed path without
+   combustion. This validates flow rates, sequencing, and valve behavior while the
+   consequences of being wrong are still small.</li>
+<li><strong>Static fire</strong>, running the full engine with the vehicle restrained, to confirm the
+   feed system delivered propellant correctly under real operating and thermal
+   conditions.</li>
+<li><strong>Flight.</strong></li>
+</ol>
+<p>The vehicle earned first place for Most Efficient Liquid Engine at the 2025 FAR-OUT
+Advanced Propulsion Rocketry Competition and reached 7,340 feet.</p>
+<blockquote>
+<p>The pressure vessel that flew was drilled the night before the hot fire using a jig I
+designed and manufactured on the spot. That story is written up separately in
+<a href="drill-jig.html">Bulkhead Drill Jig</a>.</p>
+</blockquote>
+<h2 id="what-i-would-do-differently">What I would do differently</h2>
+<p>I would instrument more heavily. We proved the system worked, but with more transducers
+across the feed path we would have had a far richer picture of <em>how</em> it worked, and a
+dataset to design the next vehicle against instead of starting Clementine's numbers from
+first principles again. The instrumentation density on Clementine is a direct response to
+this.</p></div>
+
+  
+
+  
+  <ul class="skills"><li>Pressure vessel design</li><li>Structural analysis</li><li>Feed system integration</li><li>Cold flow and static fire testing</li><li>Design for manufacture</li></ul>
+  
+
+  <nav class="pager">
+    <a href="clementine.html">&larr; Project Clementine</a>
+    <a href="sizing-tool.html">Fluid System Sizing &amp; Trade Study Tool &rarr;</a>
+  </nav>
+</main>
+
+<footer class="wrap foot">
+  <p>Dylan Encarnacion Pell · d.pell016@gmail.com</p>
+</footer>
+
+<script src="assets/vendor/katex/katex.min.js"></script>
+<script src="assets/vendor/katex/auto-render.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false }
+      ],
+      throwOnError: false
+    });
+  });
+</script>
+</body>
+</html>

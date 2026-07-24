@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project Clementine — Dylan Encarnacion Pell</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="project-page">
+
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="back" href="index.html">&larr; Dylan Encarnacion Pell</a>
+    <span class="topbar-tag">FS-03</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1 class="proj-title">Project Clementine</h1>
+  <p class="proj-sub">LOX / Ethanol Liquid Bipropellant Rocket</p>
+
+  <dl class="titleblock">
+    <div><dt>Role</dt><dd>Vice President; previously Lead Fluid Systems Engineer</dd></div>
+    <div><dt>Organization</dt><dd>Highlander Space Program, UC Riverside</dd></div>
+    <div><dt>Period</dt><dd>2026 - Present</dd></div>
+    <div><dt>Tag</dt><dd>FS-03</dd></div>
+  </dl>
+
+  
+  <div class="ph hero-ph"><span>Drop a photo at</span><code>assets/images/clementine/hero.jpg</code></div>
+  
+
+  
+
+  <div class="prose"><h2 id="the-problem">The problem</h2>
+<p>Our previous vehicle, <a href="poseidon.html">Project Poseidon</a>, used nitrous oxide, which is
+self-pressurizing: the propellant supplies its own tank pressure through its vapor
+pressure, so there is no separate pressurization system to design. Moving to liquid
+oxygen removes that convenience. LOX has to be pushed, which means the whole
+pressurization architecture becomes something I had to design rather than inherit.</p>
+<p>I owned the P&amp;ID for that system: selecting the pneumatics, valves, and regulators,
+setting the pressure schedule, defining the interfaces between the pressurization,
+propellant, and ignition subsystems, and installing the result on our fluids test wall.</p>
+<h2 id="constraints">Constraints</h2>
+<ul>
+<li><strong>Single pressurant source.</strong> One GN2 bottle had to serve both the pneumatic actuation
+  and the propellant tanks. Budget did not allow separate supplies.</li>
+<li><strong>Cryogenic propellant.</strong> LOX introduces material compatibility, thermal, and trapped
+  volume hazards that a room-temperature system does not have.</li>
+<li><strong>Student build.</strong> Commercial off-the-shelf components, limited machining, and a team
+  where members rotate in and need to operate the system safely without deep context.</li>
+<li><strong>Every test is a hazardous operation.</strong> The system had to be safe to operate and
+  legible to a new operator, not just correct on paper.</li>
+</ul>
+<h2 id="design-decisions">Design decisions</h2>
+<h3 id="holding-tank-pressure-constant-as-the-bottle-drains">Holding tank pressure constant as the bottle drains</h3>
+<p>A single GN2 bottle blows down as gas is consumed. Treating the bottle as ideal gas,</p>
+<p><div class="math-display">$$\frac{p_1 V}{T_1} = \frac{p_2 V}{T_2}$$</div></p>
+<p>supply pressure falls continuously through a test. A single spring regulator tracks that
+decay: spring regulators exhibit <strong>droop</strong>, where outlet pressure falls as inlet pressure
+drops and as flow increases, because the spring force is fixed while the sensing area
+sees changing conditions.</p>
+<p>Inconsistent tank pressure means inconsistent chamber pressure, which means the engine
+is not being tested at the condition it was designed for.</p>
+<p>My solution was a <strong>two-stage regulation scheme</strong>: a spring regulator sets the reference
+pressure in the dome of a dome-loaded regulator. The dome regulator references that
+near-constant dome pressure across a large diaphragm area rather than a spring, so its
+outlet stays essentially flat as the bottle decays and as flow varies. The spring
+regulator only has to hold a low-flow reference, which is the job it does well.</p>
+<h3 id="sizing-the-pressurant-lines">Sizing the pressurant lines</h3>
+<p>During checkout I measured a pressure drop across the GN2 lines that was larger than the
+budget allowed. Rather than raise the supply pressure to compensate, I traced it to
+undersized tubing and corrected the geometry.</p>
+<p>The reasoning is the Darcy-Weisbach relation for major losses,</p>
+<p><div class="math-display">$$\Delta p = f \, \frac{L}{D} \, \frac{\rho v^{2}}{2}$$</div></p>
+<p>with the flow velocity set by continuity,</p>
+<p><div class="math-display">$$v = \frac{4Q}{\pi D^{2}}$$</div></p>
+<p>Substituting velocity into the pressure drop shows why line diameter dominates:</p>
+<p><div class="math-display">$$\Delta p \;\propto\; \frac{1}{D}\cdot\frac{1}{D^{4}} \;=\; \frac{1}{D^{5}}$$</div></p>
+<p>At fixed volumetric flow, pressure drop scales with the <strong>inverse fifth power</strong> of
+internal diameter. Going up a single tube size is worth far more than any amount of
+tuning elsewhere in the run, and it fixes the problem at its source instead of masking it
+with higher supply pressure. Upsizing the GN2 lines brought the drop back inside budget.</p>
+<p>Fittings, valves, and bends were then added as minor losses,</p>
+<p><div class="math-display">$$\Delta p_{\text{minor}} = K \, \frac{\rho v^{2}}{2}, \qquad
+   \Delta p_{\text{total}} = \sum \Delta p_{\text{major}} + \sum \Delta p_{\text{minor}}$$</div></p>
+<p>with the friction factor from the Reynolds number,</p>
+<p><div class="math-display">$$Re = \frac{\rho v D}{\mu}$$</div></p>
+<h3 id="relief-valves-on-every-isolable-section">Relief valves on every isolable section</h3>
+<p>Any volume that can be closed off at both ends by ball valves can trap fluid. With a
+cryogenic system this is not a theoretical concern: trapped liquid oxygen warming toward
+ambient expands by roughly a factor of 860 from liquid to gas, and in a rigid closed
+volume that becomes a pressure rise that will find the weakest component.</p>
+<p>I walked the P&amp;ID section by section, identified every volume that could be isolated
+between two valves, and placed a relief valve on each one. The rule I designed to was
+that no operator sequence, correct or incorrect, should be able to create a sealed
+volume with no path to relieve.</p>
+<h3 id="instrumentation-at-every-node">Instrumentation at every node</h3>
+<p>Each measurement point carries <strong>both</strong> a mechanical pressure gauge and a pressure
+transducer. This is deliberate redundancy with two different failure modes:</p>
+<ul>
+<li>The <strong>transducer</strong> feeds the DAQ, giving a continuous recorded trace for post-test
+  analysis and live monitoring.</li>
+<li>The <strong>gauge</strong> is independent of power and software. An operator can confirm the state
+  of the system by eye during a walkdown, and a disagreement between gauge and transducer
+  immediately separates an instrumentation fault from a real fluid anomaly.</li>
+</ul>
+<p>That distinction matters during a no-go: knowing whether the sensor is lying or the
+system is genuinely off-nominal determines whether you safe the stand or keep working.</p>
+<h3 id="igniter-propellant-split">Igniter propellant split</h3>
+<p>The tanks divert a small portion of fuel and oxidizer to a torch igniter that lights the
+main combustion chamber. Sizing that bleed is an orifice problem,</p>
+<p><div class="math-display">$$\dot{m} = C_d \, A \sqrt{2 \rho \, \Delta p}$$</div></p>
+<p>The split has to deliver a reliable igniter flow without meaningfully disturbing the
+pressure or flow delivered to the main injector.</p>
+<h2 id="what-i-built">What I built</h2>
+<p>A complete pressurization, propellant, and ignition fluid system: GN2 supply feeding both
+pneumatic actuation and tank pressurization through two-stage regulation, run tanks for
+fuel and oxidizer, poppet pneumatic valve actuation, a torch igniter feed, relief
+protection on every isolable section, and instrumentation at each node reporting to the
+DAQ. The system is installed on our fluids test wall and is the stand the team now tests
+on.</p>
+<h2 id="validation">Validation</h2>
+<ol>
+<li><strong>Component bench testing</strong> before integration, to confirm each regulator, valve, and
+   transducer behaved as specified rather than as assumed.</li>
+<li><strong>System pressure checks</strong> using the installed transducers, comparing measured drops
+   against the values predicted by the sizing model.</li>
+<li><strong>Correction and re-test</strong>: the GN2 line pressure drop was identified here, corrected
+   by upsizing, and confirmed against the model.</li>
+</ol>
+<h2 id="what-i-would-do-differently">What I would do differently</h2>
+<p>I would build the pressure drop budget before selecting tubing rather than confirming it
+during checkout. The physics was not a surprise; I had the sizing tool that computes it.
+Running the numbers first would have caught the undersized run on paper and saved a
+rework cycle on hardware. It is the clearest lesson I have taken from this system:
+analysis is cheapest before you buy the fittings.</p></div>
+
+  
+
+  
+  <ul class="skills"><li>P&amp;ID architecture</li><li>Cryogenic fluid systems</li><li>Pneumatics and regulators</li><li>Instrumentation and DAQ</li><li>Hazard analysis</li></ul>
+  
+
+  <nav class="pager">
+    <span></span>
+    <a href="poseidon.html">Project Poseidon &rarr;</a>
+  </nav>
+</main>
+
+<footer class="wrap foot">
+  <p>Dylan Encarnacion Pell · d.pell016@gmail.com</p>
+</footer>
+
+<script src="assets/vendor/katex/katex.min.js"></script>
+<script src="assets/vendor/katex/auto-render.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false }
+      ],
+      throwOnError: false
+    });
+  });
+</script>
+</body>
+</html>

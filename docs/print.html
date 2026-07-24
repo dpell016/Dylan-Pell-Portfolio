@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Dylan Encarnacion Pell — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/print.css">
+</head>
+<body class="printdoc">
+
+<section class="cover">
+  <p class="eyebrow">Engineering Portfolio</p>
+  <h1>Dylan Encarnacion Pell</h1>
+  <p class="role">Mechanical Engineering · Liquid Propulsion &amp; Fluid Systems</p>
+  <p class="thesis">I design, build, and test liquid rocket propulsion hardware. My work has moved from single components, to owning a subsystem that flew, to architecting a full cryogenic fluid system from a blank sheet.
+</p>
+  <ul class="contact">
+    <li>Los Angeles, CA</li><li>d.pell016@gmail.com</li>
+    
+  </ul>
+  <hr>
+  <p class="intro">This portfolio is organized as a timeline. Each project records the problem, the constraints, the reasoning behind the design decisions, and how the result was validated. The through line is a progression from component design, to subsystem ownership on a vehicle that flew, to full-system architecture on a cryogenic stand.
+</p>
+  <ol class="toc">
+    
+    <li><span class="t">FS-03</span><span class="n">Project Clementine</span><span class="d">2026 - Present</span></li>
+    
+    <li><span class="t">FS-02</span><span class="n">Project Poseidon</span><span class="d">2025 - 2026</span></li>
+    
+    <li><span class="t">SW-01</span><span class="n">Fluid System Sizing &amp; Trade Study Tool</span><span class="d">2025 - Present</span></li>
+    
+    <li><span class="t">MF-01</span><span class="n">Bulkhead Drill Jig</span><span class="d">2025</span></li>
+    
+    <li><span class="t">MD-01</span><span class="n">Formula SAE Suspension Upright</span><span class="d">2024 - 2025</span></li>
+    
+  </ol>
+</section>
+
+
+<section class="printproj">
+  <header>
+    <span class="tag">FS-03</span>
+    <h1>Project Clementine</h1>
+    <p class="proj-sub">LOX / Ethanol Liquid Bipropellant Rocket</p>
+    <dl class="titleblock">
+      <div><dt>Role</dt><dd>Vice President; previously Lead Fluid Systems Engineer</dd></div>
+      <div><dt>Organization</dt><dd>Highlander Space Program, UC Riverside</dd></div>
+      <div><dt>Period</dt><dd>2026 - Present</dd></div>
+    </dl>
+  </header>
+  
+  
+  <div class="prose"><h2 id="the-problem">The problem</h2>
+<p>Our previous vehicle, <a href="poseidon.html">Project Poseidon</a>, used nitrous oxide, which is
+self-pressurizing: the propellant supplies its own tank pressure through its vapor
+pressure, so there is no separate pressurization system to design. Moving to liquid
+oxygen removes that convenience. LOX has to be pushed, which means the whole
+pressurization architecture becomes something I had to design rather than inherit.</p>
+<p>I owned the P&amp;ID for that system: selecting the pneumatics, valves, and regulators,
+setting the pressure schedule, defining the interfaces between the pressurization,
+propellant, and ignition subsystems, and installing the result on our fluids test wall.</p>
+<h2 id="constraints">Constraints</h2>
+<ul>
+<li><strong>Single pressurant source.</strong> One GN2 bottle had to serve both the pneumatic actuation
+  and the propellant tanks. Budget did not allow separate supplies.</li>
+<li><strong>Cryogenic propellant.</strong> LOX introduces material compatibility, thermal, and trapped
+  volume hazards that a room-temperature system does not have.</li>
+<li><strong>Student build.</strong> Commercial off-the-shelf components, limited machining, and a team
+  where members rotate in and need to operate the system safely without deep context.</li>
+<li><strong>Every test is a hazardous operation.</strong> The system had to be safe to operate and
+  legible to a new operator, not just correct on paper.</li>
+</ul>
+<h2 id="design-decisions">Design decisions</h2>
+<h3 id="holding-tank-pressure-constant-as-the-bottle-drains">Holding tank pressure constant as the bottle drains</h3>
+<p>A single GN2 bottle blows down as gas is consumed. Treating the bottle as ideal gas,</p>
+<p><div class="math-display">$$\frac{p_1 V}{T_1} = \frac{p_2 V}{T_2}$$</div></p>
+<p>supply pressure falls continuously through a test. A single spring regulator tracks that
+decay: spring regulators exhibit <strong>droop</strong>, where outlet pressure falls as inlet pressure
+drops and as flow increases, because the spring force is fixed while the sensing area
+sees changing conditions.</p>
+<p>Inconsistent tank pressure means inconsistent chamber pressure, which means the engine
+is not being tested at the condition it was designed for.</p>
+<p>My solution was a <strong>two-stage regulation scheme</strong>: a spring regulator sets the reference
+pressure in the dome of a dome-loaded regulator. The dome regulator references that
+near-constant dome pressure across a large diaphragm area rather than a spring, so its
+outlet stays essentially flat as the bottle decays and as flow varies. The spring
+regulator only has to hold a low-flow reference, which is the job it does well.</p>
+<h3 id="sizing-the-pressurant-lines">Sizing the pressurant lines</h3>
+<p>During checkout I measured a pressure drop across the GN2 lines that was larger than the
+budget allowed. Rather than raise the supply pressure to compensate, I traced it to
+undersized tubing and corrected the geometry.</p>
+<p>The reasoning is the Darcy-Weisbach relation for major losses,</p>
+<p><div class="math-display">$$\Delta p = f \, \frac{L}{D} \, \frac{\rho v^{2}}{2}$$</div></p>
+<p>with the flow velocity set by continuity,</p>
+<p><div class="math-display">$$v = \frac{4Q}{\pi D^{2}}$$</div></p>
+<p>Substituting velocity into the pressure drop shows why line diameter dominates:</p>
+<p><div class="math-display">$$\Delta p \;\propto\; \frac{1}{D}\cdot\frac{1}{D^{4}} \;=\; \frac{1}{D^{5}}$$</div></p>
+<p>At fixed volumetric flow, pressure drop scales with the <strong>inverse fifth power</strong> of
+internal diameter. Going up a single tube size is worth far more than any amount of
+tuning elsewhere in the run, and it fixes the problem at its source instead of masking it
+with higher supply pressure. Upsizing the GN2 lines brought the drop back inside budget.</p>
+<p>Fittings, valves, and bends were then added as minor losses,</p>
+<p><div class="math-display">$$\Delta p_{\text{minor}} = K \, \frac{\rho v^{2}}{2}, \qquad
+   \Delta p_{\text{total}} = \sum \Delta p_{\text{major}} + \sum \Delta p_{\text{minor}}$$</div></p>
+<p>with the friction factor from the Reynolds number,</p>
+<p><div class="math-display">$$Re = \frac{\rho v D}{\mu}$$</div></p>
+<h3 id="relief-valves-on-every-isolable-section">Relief valves on every isolable section</h3>
+<p>Any volume that can be closed off at both ends by ball valves can trap fluid. With a
+cryogenic system this is not a theoretical concern: trapped liquid oxygen warming toward
+ambient expands by roughly a factor of 860 from liquid to gas, and in a rigid closed
+volume that becomes a pressure rise that will find the weakest component.</p>
+<p>I walked the P&amp;ID section by section, identified every volume that could be isolated
+between two valves, and placed a relief valve on each one. The rule I designed to was
+that no operator sequence, correct or incorrect, should be able to create a sealed
+volume with no path to relieve.</p>
+<h3 id="instrumentation-at-every-node">Instrumentation at every node</h3>
+<p>Each measurement point carries <strong>both</strong> a mechanical pressure gauge and a pressure
+transducer. This is deliberate redundancy with two different failure modes:</p>
+<ul>
+<li>The <strong>transducer</strong> feeds the DAQ, giving a continuous recorded trace for post-test
+  analysis and live monitoring.</li>
+<li>The <strong>gauge</strong> is independent of power and software. An operator can confirm the state
+  of the system by eye during a walkdown, and a disagreement between gauge and transducer
+  immediately separates an instrumentation fault from a real fluid anomaly.</li>
+</ul>
+<p>That distinction matters during a no-go: knowing whether the sensor is lying or the
+system is genuinely off-nominal determines whether you safe the stand or keep working.</p>
+<h3 id="igniter-propellant-split">Igniter propellant split</h3>
+<p>The tanks divert a small portion of fuel and oxidizer to a torch igniter that lights the
+main combustion chamber. Sizing that bleed is an orifice problem,</p>
+<p><div class="math-display">$$\dot{m} = C_d \, A \sqrt{2 \rho \, \Delta p}$$</div></p>
+<p>The split has to deliver a reliable igniter flow without meaningfully disturbing the
+pressure or flow delivered to the main injector.</p>
+<h2 id="what-i-built">What I built</h2>
+<p>A complete pressurization, propellant, and ignition fluid system: GN2 supply feeding both
+pneumatic actuation and tank pressurization through two-stage regulation, run tanks for
+fuel and oxidizer, poppet pneumatic valve actuation, a torch igniter feed, relief
+protection on every isolable section, and instrumentation at each node reporting to the
+DAQ. The system is installed on our fluids test wall and is the stand the team now tests
+on.</p>
+<h2 id="validation">Validation</h2>
+<ol>
+<li><strong>Component bench testing</strong> before integration, to confirm each regulator, valve, and
+   transducer behaved as specified rather than as assumed.</li>
+<li><strong>System pressure checks</strong> using the installed transducers, comparing measured drops
+   against the values predicted by the sizing model.</li>
+<li><strong>Correction and re-test</strong>: the GN2 line pressure drop was identified here, corrected
+   by upsizing, and confirmed against the model.</li>
+</ol>
+<h2 id="what-i-would-do-differently">What I would do differently</h2>
+<p>I would build the pressure drop budget before selecting tubing rather than confirming it
+during checkout. The physics was not a surprise; I had the sizing tool that computes it.
+Running the numbers first would have caught the undersized run on paper and saved a
+rework cycle on hardware. It is the clearest lesson I have taken from this system:
+analysis is cheapest before you buy the fittings.</p></div>
+  
+</section>
+
+<section class="printproj">
+  <header>
+    <span class="tag">FS-02</span>
+    <h1>Project Poseidon</h1>
+    <p class="proj-sub">N₂O / Ethanol Liquid Bipropellant Rocket</p>
+    <dl class="titleblock">
+      <div><dt>Role</dt><dd>Lead Fluid Systems Engineer</dd></div>
+      <div><dt>Organization</dt><dd>Highlander Space Program, UC Riverside</dd></div>
+      <div><dt>Period</dt><dd>2025 - 2026</dd></div>
+    </dl>
+  </header>
+  
+  
+  <dl class="results"><div><dt>Competition result</dt><dd>1st place, Most Efficient Liquid Engine</dd></div><div><dt>Event</dt><dd>2025 FAR-OUT Advanced Propulsion Rocketry Competition</dd></div><div><dt>Flight altitude</dt><dd>7,340 ft</dd></div></dl>
+  
+  <div class="prose"><h2 id="the-problem">The problem</h2>
+<p>Poseidon was UC Riverside's first liquid bipropellant rocket. Nothing existed to inherit:
+no prior feed system, no validated pressure vessel, no established test procedure. As
+Lead Fluid Systems Engineer I owned the pressure vessel and the integrated fuel and
+oxidizer feed system, from analysis through fabrication and test.</p>
+<h2 id="constraints">Constraints</h2>
+<ul>
+<li><strong>First of its kind for the program.</strong> No internal heritage hardware or prior data to
+  design against.</li>
+<li><strong>Competition deadline.</strong> A fixed date that testing had to be complete before.</li>
+<li><strong>Student budget and shop access.</strong> Design had to be manufacturable with the machining
+  and assembly capability actually available to us.</li>
+<li><strong>Safety margin on a pressurized structure</strong> with people standing near it.</li>
+</ul>
+<h2 id="design-decisions">Design decisions</h2>
+<h3 id="why-nitrous-oxide-simplified-the-pressurization-problem">Why nitrous oxide simplified the pressurization problem</h3>
+<p>N₂O is self-pressurizing. At room temperature its vapor pressure sits near 700 to 750
+psi, so the propellant supplies its own tank pressure without a separate pressurant
+system. For a first liquid vehicle this removed an entire subsystem and let the team
+concentrate on the engine, the structure, and the feed path.</p>
+<p>The tradeoff is that vapor pressure is strongly temperature dependent, so tank pressure,
+and therefore engine performance, varies with ambient conditions on test day. That
+sensitivity is the reason our next vehicle moved to a separately pressurized
+architecture, which became <a href="clementine.html">Project Clementine</a>.</p>
+<h3 id="sizing-the-pressure-vessel">Sizing the pressure vessel</h3>
+<p>The vessel was analyzed as a thin-walled cylinder, valid where the radius to thickness
+ratio is greater than about 10. Under internal pressure the wall carries a hoop stress
+and an axial stress,</p>
+<p><div class="math-display">$$\sigma_{h} = \frac{p r}{t}, \qquad \sigma_{a} = \frac{p r}{2 t}$$</div></p>
+<p>Hoop stress is twice axial stress, so the hoop direction governs and sets the required
+wall thickness,</p>
+<p><div class="math-display">$$t \;\ge\; \frac{p_{\text{design}} \, r}{\sigma_{\text{allow}}},
+   \qquad \sigma_{\text{allow}} = \frac{\sigma_{y}}{FS}$$</div></p>
+<p>Design pressure was set from the maximum expected operating pressure with margin applied
+above it, rather than from nominal operating pressure, so that the structure is sized for
+the worst credible case rather than the intended one. The combined stress state was
+checked against yield using the von Mises criterion,</p>
+<p><div class="math-display">$$\sigma_{v} = \sqrt{\sigma_{h}^{2} - \sigma_{h}\sigma_{a} + \sigma_{a}^{2}}$$</div></p>
+<p>Material selection traded strength to weight against weldability and oxidizer
+compatibility, and the geometry was iterated in CAD against what the shop could actually
+produce and inspect.</p>
+<h3 id="designing-the-feed-path">Designing the feed path</h3>
+<p>The feed system had to deliver both propellants to the engine at the correct flow and
+pressure, sequence safely through fill and fire, and seal reliably. Line and orifice
+sizing followed the same incompressible relations used across the program,</p>
+<p><div class="math-display">$$\dot{m} = C_d \, A \sqrt{2 \rho \, \Delta p}$$</div></p>
+<p>with major and minor losses accumulated along each run to confirm the engine saw its
+design inlet condition rather than whatever the plumbing happened to deliver.</p>
+<h2 id="what-i-built">What I built</h2>
+<p>The pressure vessel, co-designed and fabricated: structural analysis, CAD iteration, and
+coordination with manufacturing until it was real hardware. Then the integrated fuel and
+oxidizer feed system, assembling and validating the feed lines, valves, and interfaces
+that connected tanks to engine.</p>
+<h2 id="validation">Validation</h2>
+<p>Testing followed a deliberate ladder, each step qualifying the next:</p>
+<ol>
+<li><strong>Leak and pressure checks</strong> on the assembled system, to prove sealing before
+   introducing propellant.</li>
+<li><strong>Cold flow testing</strong>, flowing propellant through the complete feed path without
+   combustion. This validates flow rates, sequencing, and valve behavior while the
+   consequences of being wrong are still small.</li>
+<li><strong>Static fire</strong>, running the full engine with the vehicle restrained, to confirm the
+   feed system delivered propellant correctly under real operating and thermal
+   conditions.</li>
+<li><strong>Flight.</strong></li>
+</ol>
+<p>The vehicle earned first place for Most Efficient Liquid Engine at the 2025 FAR-OUT
+Advanced Propulsion Rocketry Competition and reached 7,340 feet.</p>
+<blockquote>
+<p>The pressure vessel that flew was drilled the night before the hot fire using a jig I
+designed and manufactured on the spot. That story is written up separately in
+<a href="drill-jig.html">Bulkhead Drill Jig</a>.</p>
+</blockquote>
+<h2 id="what-i-would-do-differently">What I would do differently</h2>
+<p>I would instrument more heavily. We proved the system worked, but with more transducers
+across the feed path we would have had a far richer picture of <em>how</em> it worked, and a
+dataset to design the next vehicle against instead of starting Clementine's numbers from
+first principles again. The instrumentation density on Clementine is a direct response to
+this.</p></div>
+  
+</section>
+
+<section class="printproj">
+  <header>
+    <span class="tag">SW-01</span>
+    <h1>Fluid System Sizing &amp; Trade Study Tool</h1>
+    <p class="proj-sub">Python / MATLAB design automation</p>
+    <dl class="titleblock">
+      <div><dt>Role</dt><dd>Author</dd></div>
+      <div><dt>Organization</dt><dd>Highlander Space Program, UC Riverside</dd></div>
+      <div><dt>Period</dt><dd>2025 - Present</dd></div>
+    </dl>
+  </header>
+  
+  
+  <div class="prose"><h2 id="the-problem">The problem</h2>
+<p>Every change to a feed system propagates. Change a tube size and the velocity, Reynolds
+number, friction factor, and pressure drop all move, which changes the tank pressure you
+need, which changes the regulator setpoint and the structural requirement on the tank.
+Doing that by hand takes long enough that in practice you stop exploring alternatives and
+commit to the first workable answer.</p>
+<p>I wanted the team to be able to ask "what if this line were larger" and get an answer
+immediately, so that design decisions came from comparison rather than from whichever
+configuration someone happened to calculate first.</p>
+<h2 id="what-it-computes">What it computes</h2>
+<p>Given propellant properties, target mass flow, and a proposed line and tank geometry, the
+tool returns total pressure drop, flow rates, and line and tank sizing.</p>
+<p>Flow velocity from continuity:</p>
+<p><div class="math-display">$$v = \frac{4Q}{\pi D^{2}}$$</div></p>
+<p>Reynolds number to establish the flow regime:</p>
+<p><div class="math-display">$$Re = \frac{\rho v D}{\mu}$$</div></p>
+<p>Friction factor from the Swamee-Jain explicit approximation, which avoids iterating the
+implicit Colebrook equation:</p>
+<p><div class="math-display">$$f = \frac{0.25}{\left[\log_{10}\!\left(\dfrac{\varepsilon}{3.7 D} + \dfrac{5.74}{Re^{0.9}}\right)\right]^{2}}$$</div></p>
+<p>Major losses along each run:</p>
+<p><div class="math-display">$$\Delta p_{\text{major}} = f \, \frac{L}{D} \, \frac{\rho v^{2}}{2}$$</div></p>
+<p>Minor losses through valves, elbows, and fittings:</p>
+<p><div class="math-display">$$\Delta p_{\text{minor}} = K \, \frac{\rho v^{2}}{2}$$</div></p>
+<p>Summed to a system total, which sets the tank pressure required to deliver the design
+inlet condition at the injector:</p>
+<p><div class="math-display">$$p_{\text{tank}} = p_{\text{injector}} + \sum \Delta p$$</div></p>
+<h2 id="why-it-mattered">Why it mattered</h2>
+<p>The tool turned line sizing into a trade study rather than a guess. It is also what made
+the diagnosis on <a href="clementine.html">Project Clementine</a> immediate: when the measured GN2
+pressure drop came in high, the model said what the drop <em>should</em> have been for that
+geometry, which pointed straight at undersized tubing instead of leaving us to hunt.</p>
+<h2 id="what-i-would-do-differently">What I would do differently</h2>
+<p>I would build compressible flow handling in from the start. The incompressible relations
+are correct for the liquid propellant runs, but the high-pressure GN2 side is better
+described with compressibility and choked flow limits accounted for,</p>
+<p><div class="math-display">$$\frac{p^{*}}{p_{0}} = \left(\frac{2}{\gamma+1}\right)^{\frac{\gamma}{\gamma-1}} \approx 0.528 \quad (\gamma = 1.4)$$</div></p>
+<p>so that the tool covers the pressurant side with the same rigor as the propellant side.</p></div>
+  
+</section>
+
+<section class="printproj">
+  <header>
+    <span class="tag">MF-01</span>
+    <h1>Bulkhead Drill Jig</h1>
+    <p class="proj-sub">Overnight fixture design under a test deadline</p>
+    <dl class="titleblock">
+      <div><dt>Role</dt><dd>Designer and machinist</dd></div>
+      <div><dt>Organization</dt><dd>Highlander Space Program, UC Riverside</dd></div>
+      <div><dt>Period</dt><dd>2025</dd></div>
+    </dl>
+  </header>
+  
+  
+  <div class="prose"><h2 id="the-problem">The problem</h2>
+<p>The night before we were due to travel out and hot fire the rocket, the pressure vessel
+was not prepped. The bulkheads could not be installed because the holes at the ends had
+not been drilled. Without those holes there was no vessel, and without the vessel there
+was no test.</p>
+<h2 id="constraints">Constraints</h2>
+<ul>
+<li><strong>One night.</strong> The team was leaving in the morning.</li>
+<li><strong>No second chance on the part.</strong> This was the flight pressure vessel. A misplaced hole
+  would scrap a component we could not replace before the test.</li>
+<li><strong>Repeatability across both ends</strong>, and hole positions accurate enough that the
+  bulkhead fastener pattern would actually line up.</li>
+</ul>
+<h2 id="design-decisions">Design decisions</h2>
+<p>The instinct under time pressure is to mark out the holes by hand and drill. I did not,
+because hand layout puts the positional accuracy of a flight part in a scribe line and a
+steady hand, and it has to be repeated independently at both ends. Each layout is a fresh
+opportunity to be wrong.</p>
+<p>A jig moves the accuracy problem off the part and into a fixture. The hole pattern is
+established once, in the jig, and then transferred identically to every part and every
+end. The bolt circle positions follow directly from the pattern geometry,</p>
+<p><div class="math-display">$$\theta_i = \frac{360^{\circ}}{n}\, i, \qquad
+   x_i = R\cos\theta_i, \qquad y_i = R\sin\theta_i$$</div></p>
+<p>where <span class="math-inline">$n$</span> is the number of fasteners and <span class="math-inline">$R$</span> the bolt circle radius. Locating off the jig
+also constrains the drill against wandering at entry, which on a curved surface is the
+most likely way to lose position.</p>
+<p>Spending part of a very short night building a fixture rather than drilling immediately
+was the decision that mattered. It cost time up front and bought back accuracy and a
+second identical end.</p>
+<h2 id="outcome">Outcome</h2>
+<p>The vessel was drilled, the bulkheads fit on both ends, and the pressure vessel was ready
+by morning. We travelled on schedule and ran the hot fire.</p>
+<h2 id="what-i-would-do-differently">What I would do differently</h2>
+<p>The jig should have existed before the night it was needed. The requirement was knowable
+weeks earlier. What this taught me is to look ahead at which operations on the critical
+path have no tooling yet, because those are the ones that turn into overnight problems.</p></div>
+  
+</section>
+
+<section class="printproj">
+  <header>
+    <span class="tag">MD-01</span>
+    <h1>Formula SAE Suspension Upright</h1>
+    <p class="proj-sub">Three design iterations for manufacturability</p>
+    <dl class="titleblock">
+      <div><dt>Role</dt><dd>Suspension Engineer</dd></div>
+      <div><dt>Organization</dt><dd>Formula SAE, UC Riverside</dd></div>
+      <div><dt>Period</dt><dd>2024 - 2025</dd></div>
+    </dl>
+  </header>
+  
+  
+  <div class="prose"><h2 id="the-problem">The problem</h2>
+<p>The upright carries wheel loads into the suspension and locates the hub, so it needs
+tight tolerances on its critical features. The first design achieved that geometry but
+was expensive to make: complex features and awkward tool access meant more machining
+operations than the part warranted.</p>
+<p>A part that cannot be produced accurately and repeatably with the equipment actually
+available is not a finished design, regardless of how it performs in CAD.</p>
+<h2 id="design-decisions">Design decisions</h2>
+<p>Across three iterations I worked the geometry against the manufacturing process rather
+than only against the load case. The levers that mattered:</p>
+<ul>
+<li><strong>Reducing the number of setups.</strong> Every time a part is unclamped and re-fixtured, cost
+  goes up and a new tolerance stack is introduced between features cut in different
+  orientations. Consolidating features into fewer orientations improves both cost and
+  achievable accuracy.</li>
+<li><strong>Improving tool access.</strong> Features that force long, thin tooling or unusual approach
+  angles machine slowly and chatter. Opening up access let standard tooling reach the
+  features.</li>
+<li><strong>Simplifying geometry that was not carrying load.</strong> Complexity that existed for its
+  own sake was removed; complexity that carried wheel loads stayed.</li>
+</ul>
+<p>The net result was roughly a 25% improvement in manufacturability by reduced machining
+complexity and better feature accessibility, while preserving the precision required at
+the hub and mounting interfaces.</p>
+<h2 id="what-i-would-do-differently">What I would do differently</h2>
+<p>I would involve whoever is cutting the part in the first iteration rather than the
+second. Most of what I found in cycles two and three, a machinist would have flagged in
+five minutes looking at cycle one. Design for manufacture works far better as a
+conversation than as a solo review.</p></div>
+  
+</section>
+
+
+<script src="assets/vendor/katex/katex.min.js"></script>
+<script src="assets/vendor/katex/auto-render.min.js"></script>
+<script>
+  renderMathInElement(document.body, {
+    delimiters: [{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],
+    throwOnError: false
+  });
+</script>
+</body>
+</html>

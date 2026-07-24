@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bulkhead Drill Jig — Dylan Encarnacion Pell</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="project-page">
+
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="back" href="index.html">&larr; Dylan Encarnacion Pell</a>
+    <span class="topbar-tag">MF-01</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1 class="proj-title">Bulkhead Drill Jig</h1>
+  <p class="proj-sub">Overnight fixture design under a test deadline</p>
+
+  <dl class="titleblock">
+    <div><dt>Role</dt><dd>Designer and machinist</dd></div>
+    <div><dt>Organization</dt><dd>Highlander Space Program, UC Riverside</dd></div>
+    <div><dt>Period</dt><dd>2025</dd></div>
+    <div><dt>Tag</dt><dd>MF-01</dd></div>
+  </dl>
+
+  
+  <div class="ph hero-ph"><span>Drop a photo at</span><code>assets/images/drill-jig/hero.jpg</code></div>
+  
+
+  
+
+  <div class="prose"><h2 id="the-problem">The problem</h2>
+<p>The night before we were due to travel out and hot fire the rocket, the pressure vessel
+was not prepped. The bulkheads could not be installed because the holes at the ends had
+not been drilled. Without those holes there was no vessel, and without the vessel there
+was no test.</p>
+<h2 id="constraints">Constraints</h2>
+<ul>
+<li><strong>One night.</strong> The team was leaving in the morning.</li>
+<li><strong>No second chance on the part.</strong> This was the flight pressure vessel. A misplaced hole
+  would scrap a component we could not replace before the test.</li>
+<li><strong>Repeatability across both ends</strong>, and hole positions accurate enough that the
+  bulkhead fastener pattern would actually line up.</li>
+</ul>
+<h2 id="design-decisions">Design decisions</h2>
+<p>The instinct under time pressure is to mark out the holes by hand and drill. I did not,
+because hand layout puts the positional accuracy of a flight part in a scribe line and a
+steady hand, and it has to be repeated independently at both ends. Each layout is a fresh
+opportunity to be wrong.</p>
+<p>A jig moves the accuracy problem off the part and into a fixture. The hole pattern is
+established once, in the jig, and then transferred identically to every part and every
+end. The bolt circle positions follow directly from the pattern geometry,</p>
+<p><div class="math-display">$$\theta_i = \frac{360^{\circ}}{n}\, i, \qquad
+   x_i = R\cos\theta_i, \qquad y_i = R\sin\theta_i$$</div></p>
+<p>where <span class="math-inline">$n$</span> is the number of fasteners and <span class="math-inline">$R$</span> the bolt circle radius. Locating off the jig
+also constrains the drill against wandering at entry, which on a curved surface is the
+most likely way to lose position.</p>
+<p>Spending part of a very short night building a fixture rather than drilling immediately
+was the decision that mattered. It cost time up front and bought back accuracy and a
+second identical end.</p>
+<h2 id="outcome">Outcome</h2>
+<p>The vessel was drilled, the bulkheads fit on both ends, and the pressure vessel was ready
+by morning. We travelled on schedule and ran the hot fire.</p>
+<h2 id="what-i-would-do-differently">What I would do differently</h2>
+<p>The jig should have existed before the night it was needed. The requirement was knowable
+weeks earlier. What this taught me is to look ahead at which operations on the critical
+path have no tooling yet, because those are the ones that turn into overnight problems.</p></div>
+
+  
+
+  
+  <ul class="skills"><li>Fixture design</li><li>Machining</li><li>Geometric tolerancing</li><li>Rapid turnaround</li></ul>
+  
+
+  <nav class="pager">
+    <a href="sizing-tool.html">&larr; Fluid System Sizing &amp; Trade Study Tool</a>
+    <a href="fsae-upright.html">Formula SAE Suspension Upright &rarr;</a>
+  </nav>
+</main>
+
+<footer class="wrap foot">
+  <p>Dylan Encarnacion Pell · d.pell016@gmail.com</p>
+</footer>
+
+<script src="assets/vendor/katex/katex.min.js"></script>
+<script src="assets/vendor/katex/auto-render.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false }
+      ],
+      throwOnError: false
+    });
+  });
+</script>
+</body>
+</html>

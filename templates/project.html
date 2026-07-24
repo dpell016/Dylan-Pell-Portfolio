@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}{{ p.title }} — {{ cfg.name }}{% endblock %}
+{% block bodyclass %}project-page{% endblock %}
+{% block content %}
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="back" href="index.html">&larr; {{ cfg.name }}</a>
+    <span class="topbar-tag">{{ p.tag }}</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1 class="proj-title">{{ p.title }}</h1>
+  <p class="proj-sub">{{ p.subtitle }}</p>
+
+  <dl class="titleblock">
+    <div><dt>Role</dt><dd>{{ p.role }}</dd></div>
+    <div><dt>Organization</dt><dd>{{ p.org }}</dd></div>
+    <div><dt>Period</dt><dd>{{ p.period }}</dd></div>
+    <div><dt>Tag</dt><dd>{{ p.tag }}</dd></div>
+  </dl>
+
+  {% if p.hero_exists %}
+  <figure class="hero"><img src="assets/images/{{ p.hero }}" alt="{{ p.title }}"></figure>
+  {% elif p.hero %}
+  <div class="ph hero-ph"><span>Drop a photo at</span><code>assets/images/{{ p.hero }}</code></div>
+  {% endif %}
+
+  {% if p.results %}
+  <dl class="results big">
+    {% for r in p.results %}<div><dt>{{ r.label }}</dt><dd>{{ r.value }}</dd></div>{% endfor %}
+  </dl>
+  {% endif %}
+
+  <div class="prose">{{ p.body_html|safe }}</div>
+
+  {% if p.images %}
+  <section class="figures">
+    {% for img in p.images %}
+    <figure><img src="assets/images/{{ img.file }}" alt="{{ img.caption }}"><figcaption>{{ img.caption }}</figcaption></figure>
+    {% endfor %}
+  </section>
+  {% endif %}
+
+  {% if p.skills %}
+  <ul class="skills">{% for s in p.skills %}<li>{{ s }}</li>{% endfor %}</ul>
+  {% endif %}
+
+  <nav class="pager">
+    {% if prev %}<a href="{{ prev.slug }}.html">&larr; {{ prev.title }}</a>{% else %}<span></span>{% endif %}
+    {% if next %}<a href="{{ next.slug }}.html">{{ next.title }} &rarr;</a>{% endif %}
+  </nav>
+</main>
+
+<footer class="wrap foot">
+  <p>{{ cfg.name }} · {{ cfg.email }}{% if cfg.phone %} · {{ cfg.phone }}{% endif %}</p>
+</footer>
+{% endblock %}

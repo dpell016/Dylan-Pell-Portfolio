@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>{{ cfg.name }} — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/print.css">
+</head>
+<body class="printdoc">
+
+<section class="cover">
+  <p class="eyebrow">Engineering Portfolio</p>
+  <h1>{{ cfg.name }}</h1>
+  <p class="role">{{ cfg.role }}</p>
+  <p class="thesis">{{ cfg.thesis }}</p>
+  <ul class="contact">
+    <li>{{ cfg.location }}</li><li>{{ cfg.email }}</li>{% if cfg.phone %}<li>{{ cfg.phone }}</li>{% endif %}
+    {% if cfg.site_url %}<li>{{ cfg.site_url }}</li>{% endif %}
+  </ul>
+  <hr>
+  <p class="intro">{{ cfg.intro }}</p>
+  <ol class="toc">
+    {% for p in projects %}
+    <li><span class="t">{{ p.tag }}</span><span class="n">{{ p.title }}</span><span class="d">{{ p.period }}</span></li>
+    {% endfor %}
+  </ol>
+</section>
+
+{% for p in projects %}
+<section class="printproj">
+  <header>
+    <span class="tag">{{ p.tag }}</span>
+    <h1>{{ p.title }}</h1>
+    <p class="proj-sub">{{ p.subtitle }}</p>
+    <dl class="titleblock">
+      <div><dt>Role</dt><dd>{{ p.role }}</dd></div>
+      <div><dt>Organization</dt><dd>{{ p.org }}</dd></div>
+      <div><dt>Period</dt><dd>{{ p.period }}</dd></div>
+    </dl>
+  </header>
+  {% if p.hero_exists %}<figure class="hero"><img src="assets/images/{{ p.hero }}" alt=""></figure>{% endif %}
+  {% if p.results %}
+  <dl class="results">{% for r in p.results %}<div><dt>{{ r.label }}</dt><dd>{{ r.value }}</dd></div>{% endfor %}</dl>
+  {% endif %}
+  <div class="prose">{{ p.body_html|safe }}</div>
+  {% if p.images %}
+  <section class="figures">
+    {% for img in p.images %}<figure><img src="assets/images/{{ img.file }}" alt=""><figcaption>{{ img.caption }}</figcaption></figure>{% endfor %}
+  </section>
+  {% endif %}
+</section>
+{% endfor %}
+
+<script src="assets/vendor/katex/katex.min.js"></script>
+<script src="assets/vendor/katex/auto-render.min.js"></script>
+<script>
+  renderMathInElement(document.body, {
+    delimiters: [{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],
+    throwOnError: false
+  });
+</script>
+</body>
+</html>
