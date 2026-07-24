@@ -1,0 +1,56 @@
+name: Build and deploy site
+
+# When project content or code changes on main, rebuild the site (and PDF) and
+# commit the regenerated docs/ back. GitHub Pages then serves the update.
+# Editing a markdown file on github.com is enough to trigger this.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'content/**'
+      - 'templates/**'
+      - 'assets/**'
+      - 'admin/**'
+      - 'portfolio.yaml'
+      - 'build.py'
+      - 'requirements.txt'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-site
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          python -m playwright install --with-deps chromium
+
+      - name: Build site and PDF
+        run: python build.py --pdf
+
+      - name: Commit rebuilt site
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs Dylan_Pell_Portfolio.pdf
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Rebuild site from content changes [skip ci]"
+            git push
+          fi

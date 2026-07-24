@@ -1,0 +1,60 @@
+# Sveltia CMS configuration.
+#
+# The editor commits changes to the markdown files in content/projects/. The
+# build workflow then regenerates the site. Editing here = editing the site.
+#
+# SETUP: replace YOUR-AUTH-RELAY below with the URL of your login relay once you
+# deploy it (see the setup checklist). Until then, /admin will load but cannot
+# sign in, so nobody can edit.
+
+backend:
+  name: github
+  repo: dpell016/Dylan-Pell-Portfolio
+  branch: main
+  base_url: https://YOUR-AUTH-RELAY.workers.dev
+
+# Where the CMS would store uploaded media. Paths in frontmatter stay relative
+# to assets/images (e.g. clementine/hero.jpg), matching how build.py reads them.
+media_folder: assets/images
+public_folder: /assets/images
+
+collections:
+  - name: projects
+    label: Projects
+    label_singular: Project
+    folder: content/projects
+    extension: md
+    format: yaml-frontmatter
+    create: true
+    slug: '{{fields.order}}-{{slug}}'
+    identifier_field: title
+    summary: '{{fields.order}} — {{title}}'
+    fields:
+      - { name: slug, label: 'Slug (page URL, e.g. clementine)', widget: string }
+      - { name: title, label: Title, widget: string }
+      - { name: subtitle, label: Subtitle, widget: string }
+      - { name: tag, label: 'Tag (e.g. FS-03)', widget: string }
+      - { name: role, label: Role, widget: string }
+      - { name: org, label: Organization, widget: string }
+      - { name: period, label: 'Period (e.g. 2025 - Present)', widget: string }
+      - { name: status, label: Status, widget: select, options: [active, complete] }
+      - { name: order, label: 'Order (lower = higher on the timeline)', widget: number, value_type: int }
+      - { name: featured, label: 'Include in the PDF?', widget: boolean, default: true }
+      - { name: summary, label: Summary, widget: text }
+      - { name: skills, label: Skills, widget: list }
+      - { name: hero, label: 'Hero image path (optional)', widget: string, required: false }
+      - name: results
+        label: 'Results strip (optional)'
+        widget: list
+        required: false
+        fields:
+          - { name: label, label: Label, widget: string }
+          - { name: value, label: Value, widget: string }
+      - name: images
+        label: 'Figures (optional)'
+        widget: list
+        required: false
+        fields:
+          - { name: file, label: 'File path (e.g. clementine/pid.jpg)', widget: string }
+          - { name: caption, label: Caption, widget: string }
+      - { name: body, label: 'Body (the write-up)', widget: markdown }

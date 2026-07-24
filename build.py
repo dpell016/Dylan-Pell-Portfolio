@@ -26,6 +26,7 @@ ROOT = Path(__file__).parent
 CONTENT = ROOT / "content" / "projects"
 TEMPLATES = ROOT / "templates"
 ASSETS = ROOT / "assets"
+ADMIN = ROOT / "admin"   # login-gated CMS editor, copied to docs/admin if present
 SITE = ROOT / "docs"  # GitHub Pages only serves from root or docs/, so output here
 
 MATH_BLOCK = re.compile(r"\$\$(.+?)\$\$", re.DOTALL)
@@ -108,6 +109,8 @@ def build(render_pdf=False):
         shutil.rmtree(SITE)
     SITE.mkdir(parents=True)
     shutil.copytree(ASSETS, SITE / "assets")
+    if ADMIN.exists():
+        shutil.copytree(ADMIN, SITE / "admin")
 
     # Custom domain for GitHub Pages. Written on every build so it survives the rmtree
     # above; without this the CNAME is lost on rebuild and the domain detaches.
