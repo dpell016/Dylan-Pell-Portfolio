@@ -11,7 +11,7 @@ backend:
   name: github
   repo: dpell016/Dylan-Pell-Portfolio
   branch: main
-  base_url: https://YOUR-AUTH-RELAY.workers.dev
+  base_url: https://sveltia-cms-auth.d-pell016.workers.dev
 
 # Where the CMS would store uploaded media. Paths in frontmatter stay relative
 # to assets/images (e.g. clementine/hero.jpg), matching how build.py reads them.
