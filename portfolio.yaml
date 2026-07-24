@@ -8,9 +8,11 @@ site_url: ""   # PDF cover URL. Fill in (https://dylanpellportfolio.com) once th
                # domain resolves and HTTPS works, then rebuild --pdf. Left blank so the
                # PDF never shows a link that does not yet load.
 
-# Custom domain for GitHub Pages. build.py writes this to docs/CNAME on every build,
-# so the domain survives the rebuild that wipes docs/. Bare host, no https://.
-domain: dylanpellportfolio.com
+# Custom domain for GitHub Pages. If set, build.py writes it to docs/CNAME each build.
+# Empty means no custom domain: the site serves at the free URL
+# https://dpell016.github.io/Dylan-Pell-Portfolio/ . To use a paid domain later, put the
+# bare host here (e.g. dylanpellportfolio.com), rebuild, and configure DNS.
+domain: ""
 
 # One-sentence thesis shown at the top of the site and PDF.
 thesis: >
