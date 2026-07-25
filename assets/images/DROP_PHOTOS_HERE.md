@@ -27,5 +27,10 @@ fsae-upright/iterations.jpg    the three revisions side by side
 
 lspace/hero.jpg                team or presentation photo
 
+copv/hero.jpg                  best single COPV image
+copv/bulkheads.jpg             the two bulkheads (CAD render or machined parts)
+copv/layup.jpg                 carbon fiber wrapping in progress
+copv/assembly.jpg              the assembled overwrapped test article
+
 JPG or PNG. ~1600px wide is plenty. Landscape works best.
 Photos of you working on the hardware are worth including; they read as credibility.

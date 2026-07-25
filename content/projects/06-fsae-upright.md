@@ -7,7 +7,7 @@ role: Suspension Engineer
 org: Formula SAE, UC Riverside
 period: 2024 - 2025
 status: complete
-order: 5
+order: 6
 featured: true
 summary: >
   Took a high-precision suspension upright through three design cycles in SolidWorks,

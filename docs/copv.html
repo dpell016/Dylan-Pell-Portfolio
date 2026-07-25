@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Composite Overwrapped Pressure Vessel Study — Dylan Encarnacion Pell</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="project-page">
+
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="back" href="index.html">&larr; Dylan Encarnacion Pell</a>
+    <span class="topbar-tag">ST-01</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1 class="proj-title">Composite Overwrapped Pressure Vessel Study</h1>
+  <p class="proj-sub">Carbon fiber overwrap testing for higher tank pressure</p>
+
+  <dl class="titleblock">
+    <div><dt>Role</dt><dd>General Member</dd></div>
+    <div><dt>Organization</dt><dd>Highlander Space Program, UC Riverside</dd></div>
+    <div><dt>Period</dt><dd>2024 - 2025</dd></div>
+    <div><dt>Tag</dt><dd>ST-01</dd></div>
+  </dl>
+
+  
+  <div class="ph hero-ph"><span>Drop a photo at</span><code>assets/images/copv/hero.jpg</code></div>
+  
+
+  
+
+  <div class="prose"><h2 id="the-problem">The problem</h2>
+<p>Project Poseidon fed its engine from pressurized propellant tanks. Higher tank pressure
+raises chamber pressure, and higher chamber pressure raises thrust. What limits tank
+pressure is the tank wall itself: push a metal vessel too far and the wall stress reaches
+the material's yield point. You can allow more pressure by making the wall thicker, but
+that adds weight the vehicle then has to carry all the way up.</p>
+<p>The question our small group set out to answer was whether a composite overwrapped
+pressure vessel, a COPV, could hold higher pressure without that weight penalty. I joined
+the effort as a general member.</p>
+<h2 id="constraints">Constraints</h2>
+<ul>
+<li><strong>General-member role.</strong> I was not leading this. I owned the CAD, and I shared the
+  build and test with two teammates.</li>
+<li><strong>Student fabrication.</strong> The test vessels, bulkheads, and tooling all had to be things
+  we could machine and assemble ourselves.</li>
+<li><strong>A process we were still learning.</strong> None of us were experienced with carbon fiber
+  layup, so getting the process right was part of what we were testing rather than
+  something we could assume.</li>
+<li><strong>Pressurized test article.</strong> Anything that holds pressure is a hazard, so the parts
+  had to be built and handled with that in mind.</li>
+</ul>
+<h2 id="design-decisions">Design decisions</h2>
+<h3 id="why-a-composite-overwrap-instead-of-a-thicker-metal-wall">Why a composite overwrap instead of a thicker metal wall</h3>
+<p>A thin-walled pressure vessel carries a hoop stress that grows with pressure and radius
+and falls with wall thickness,</p>
+<p><div class="math-display">$$\sigma_h = \frac{p\,r}{t}$$</div></p>
+<p>To allow more pressure in an all-metal vessel you raise <span class="math-inline">$t$</span>, and that adds mass around the
+entire vessel. A COPV takes a different route. A thin metal liner holds the gas and
+provides the seal, while a carbon fiber overwrap carries most of the pressure load in
+tension. Carbon fiber has a very high strength for its weight, so the overwrap buys
+pressure capacity for far less mass than the equivalent metal would. That trade is the
+reason COPVs are used on flight vehicles in the first place.</p>
+<h3 id="capping-the-vessel-with-bulkheads-and-a-drill-jig">Capping the vessel with bulkheads and a drill jig</h3>
+<p>To turn a plain section of tube into a vessel we could actually pressurize, both ends had
+to be closed. I designed two bulkheads in SolidWorks to cap the ends of a smaller test
+vessel, and a drill jig to locate the fastener holes.</p>
+<p>The jig was the part that mattered most. The holes in the bulkhead have to line up with
+the holes in the vessel, and drilling them by hand without a guide would not hit the same
+pattern twice. Locating them with tooling instead of by eye is the same reasoning I used
+again later on the <a href="drill-jig.html">Bulkhead Drill Jig</a> for Poseidon.</p>
+<h3 id="building-the-overwrap-by-hand">Building the overwrap by hand</h3>
+<p>With the vessel assembled, we wrapped carbon fiber around one of the two test vessels and
+left the other bare as a reference. The goal was to learn the process directly: how the
+fiber is tensioned and oriented, how the layup goes down, and how the overwrapped vessel
+behaves under pressure compared to the bare one.</p>
+<h2 id="what-i-built">What I built</h2>
+<p>Two bulkheads and a drill jig, all designed in SolidWorks, that turned a small tube into a
+sealed, testable pressure vessel. Working with two teammates, I helped assemble the
+vessels and overwrap one of them in carbon fiber to make the COPV test article.</p>
+<h2 id="validation">Validation</h2>
+<p>We pressurized both articles and compared the bare vessel against the carbon fiber
+overwrapped one, so we could see directly how much pressure capacity the overwrap added
+rather than estimating it. That comparison, together with what it took to build and handle
+a COPV as a student team, is what the program used to weigh whether a COPV belonged on
+Poseidon.</p>
+<h2 id="what-i-would-do-differently">What I would do differently</h2>
+<p>I would instrument the pressure test more heavily. We compared the two articles, but with
+more measurement across the wall we would have understood how the overwrap carried load,
+not only the point it reached, and we would have had data to design the next article
+against.</p>
+<p>The more honest lesson is about what the project was really for. We did not end up putting
+a COPV on Poseidon. What we kept was the carbon fiber capability: we used what we learned
+about composite layup to build lightweight housings for the fluid components exposed
+underneath the pressure vessel, on the line running to the combustion chamber. The COPV
+was the goal we set, but the composites skill was the result we actually carried forward,
+and it went on to fly on <a href="poseidon.html">Project Poseidon</a>.</p></div>
+
+  
+
+  
+  <ul class="skills"><li>SolidWorks</li><li>Pressure vessel design</li><li>Carbon fiber composites</li><li>Composite layup</li><li>Design for manufacture</li></ul>
+  
+
+  <nav class="pager">
+    <a href="drill-jig.html">&larr; Bulkhead Drill Jig</a>
+    <a href="fsae-upright.html">Formula SAE Suspension Upright &rarr;</a>
+  </nav>
+</main>
+
+<footer class="wrap foot">
+  <p>Dylan Encarnacion Pell · d.pell016@gmail.com</p>
+</footer>
+
+<script src="assets/vendor/katex/katex.min.js"></script>
+<script src="assets/vendor/katex/auto-render.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false }
+      ],
+      throwOnError: false
+    });
+  });
+</script>
+</body>
+</html>

@@ -7,7 +7,7 @@ role: Electrical Engineer (team-selected)
 org: NASA MCA L'SPACE Academy
 period: Sep 2024 - Dec 2024
 status: complete
-order: 6
+order: 7
 featured: false
 summary: >
   Selected as team Electrical Engineer; developed mission proposals and researched power
