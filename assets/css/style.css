@@ -188,8 +188,16 @@ a:hover { color: var(--cryo); }
 .katex { font-size: 1.02em; }
 
 /* ---------- images ---------- */
-figure { margin: 26px 0; }
-figure img { width: 100%; height: auto; display: block; border: 1px solid var(--rule); background: var(--surface); }
+/* Images sit within the reading column and are height-capped, so tall shots
+   (phone photos, portrait CAD views) display at a professional size on a laptop
+   instead of filling the whole page. Full-resolution files are left untouched. */
+figure { margin: 26px 0; max-width: var(--measure); }
+figure img {
+  display: block; margin: 0 auto;
+  max-width: 100%; max-height: min(70vh, 640px);
+  width: auto; height: auto;
+  border: 1px solid var(--rule); background: var(--surface);
+}
 figcaption { font-family: var(--mono); font-size: 12px; color: var(--steel); margin-top: 8px; }
 .figures { margin: 40px 0; }
 
