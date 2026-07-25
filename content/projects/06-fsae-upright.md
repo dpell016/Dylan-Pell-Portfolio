@@ -18,12 +18,14 @@ skills:
   - Design for manufacture
   - Machining processes
   - Iterative design
-hero: fsae-upright/hero.jpg
+hero: fsae-upright/iteration-3.jpg
 images:
-  - file: fsae-upright/cad.jpg
-    caption: Final upright geometry in SolidWorks.
-  - file: fsae-upright/iterations.jpg
-    caption: Design progression across three iterations.
+  - file: fsae-upright/iteration-1.jpg
+    caption: First iteration in SolidWorks.
+  - file: fsae-upright/iteration-2.jpg
+    caption: Second iteration.
+  - file: fsae-upright/iteration-3.jpg
+    caption: Third and final iteration, the design I carried forward.
 ---
 
 ## The problem

@@ -21,9 +21,9 @@ drill-jig/hero.jpg             the jig
 drill-jig/jig.jpg              jig detail
 drill-jig/drilled-vessel.jpg   drilled bulkhead interface
 
-fsae-upright/hero.jpg          machined part or CAD render
-fsae-upright/cad.jpg           SolidWorks model
-fsae-upright/iterations.jpg    the three revisions side by side
+fsae-upright/iteration-1.jpg   first design iteration (SolidWorks)
+fsae-upright/iteration-2.jpg   second iteration
+fsae-upright/iteration-3.jpg   final, best iteration (also used as the hero image)
 
 lspace/hero.jpg                team or presentation photo
 
