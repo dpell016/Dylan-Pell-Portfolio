@@ -10,8 +10,8 @@ status: active
 order: 1
 featured: true
 summary: >
-  Designed the P&ID for a cryogenic LOX and ethanol fluid system end to end, from
-  component selection and pressure schedule through installation on the fluids test wall.
+  Developed the P&ID for a cryogenic LOX and ethanol fluid system, from component
+  selection and pressure schedule through installation on the fluids test wall.
 skills:
   - P&ID architecture
   - Cryogenic fluid systems
@@ -21,7 +21,7 @@ skills:
 hero: clementine/hero.jpg
 images:
   - file: clementine/pid.jpg
-    caption: The P&ID I designed for the LOX and ethanol system.
+    caption: The P&ID I developed for the program's LOX and ethanol system.
   - file: clementine/test-wall.jpg
     caption: The system installed on the fluids test wall.
   - file: clementine/regulators.jpg
@@ -36,9 +36,11 @@ pressure, so there is no separate pressurization system to design. Moving to liq
 oxygen removes that convenience. LOX has to be pushed, which means the whole
 pressurization architecture becomes something I had to design rather than inherit.
 
-I owned the P&ID for that system: selecting the pneumatics, valves, and regulators,
-setting the pressure schedule, defining the interfaces between the pressurization,
-propellant, and ignition subsystems, and installing the result on our fluids test wall.
+This was my project. The P&ID belongs to Highlander Space Program, and my teammates
+advised me along the way, but the design work was mine: selecting the pneumatics, valves,
+and regulators, setting the pressure schedule, defining the interfaces between the
+pressurization, propellant, and ignition subsystems, and installing the result on our
+fluids test wall.
 
 ## Constraints
 
