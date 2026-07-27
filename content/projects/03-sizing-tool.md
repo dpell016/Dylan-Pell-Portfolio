@@ -20,8 +20,8 @@ skills:
   - Design automation
 hero: sizing-tool/hero.jpg
 images:
-  - file: sizing-tool/output.jpg
-    caption: Tool output for a feed system configuration.
+  - file: sizing-tool/poppet-verification.jpg
+    caption: "The poppet-valve verification tool I built for the team: hoop stress, force balance, and thread shear."
 ---
 
 ## The problem
@@ -66,6 +66,16 @@ Summed to a system total, which sets the tank pressure required to deliver the d
 inlet condition at the injector:
 
 $$ p_{\text{tank}} = p_{\text{injector}} + \sum \Delta p $$
+
+## A verification tool for the poppet valves
+
+Alongside the feed-system sizing, I built a second automated calculator for the teammates
+designing our poppet pneumatic valves, so they could check their own work as they went. It
+runs the three checks that decide whether a valve body holds pressure and actuates as
+intended: hoop stress in the body, a force balance across the poppet, and thread shear at
+the joints. Handing them a tool rather than a worksheet meant a valve geometry could be
+verified in seconds, and it gave the team one shared reference so everyone was checking
+against the same math.
 
 ## Why it mattered
 

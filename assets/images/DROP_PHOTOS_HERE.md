@@ -13,8 +13,8 @@ poseidon/feed-system.jpg       assembled feed system
 poseidon/static-fire.jpg       static fire
 poseidon/flight.jpg            launch or recovery
 
-sizing-tool/hero.jpg           screenshot of the tool
-sizing-tool/output.jpg         a plot or results table
+sizing-tool/hero.jpg                  tank/line sizing and pressure-drop output
+sizing-tool/poppet-verification.jpg   poppet-valve verification calculator
 
 drill-jig/hero.jpg             the jig
 drill-jig/jig.jpg              jig detail

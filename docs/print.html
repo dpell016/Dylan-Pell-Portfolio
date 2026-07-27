@@ -31,6 +31,8 @@
     
     <li><span class="t">SW-01</span><span class="n">Fluid System Sizing &amp; Trade Study Tool</span><span class="d">2025 - Present</span></li>
     
+    <li><span class="t">RD-01</span><span class="n">Supplier Cost-Benefit Analysis &amp; Validation</span><span class="d">Jul 2025 - Oct 2025</span></li>
+    
     <li><span class="t">MF-01</span><span class="n">Bulkhead Drill Jig</span><span class="d">2025</span></li>
     
     <li><span class="t">ST-01</span><span class="n">Composite Overwrapped Pressure Vessel Study</span><span class="d">2024 - 2025</span></li>
@@ -309,6 +311,14 @@ implicit Colebrook equation:</p>
 <p>Summed to a system total, which sets the tank pressure required to deliver the design
 inlet condition at the injector:</p>
 <p><div class="math-display">$$p_{\text{tank}} = p_{\text{injector}} + \sum \Delta p$$</div></p>
+<h2 id="a-verification-tool-for-the-poppet-valves">A verification tool for the poppet valves</h2>
+<p>Alongside the feed-system sizing, I built a second automated calculator for the teammates
+designing our poppet pneumatic valves, so they could check their own work as they went. It
+runs the three checks that decide whether a valve body holds pressure and actuates as
+intended: hoop stress in the body, a force balance across the poppet, and thread shear at
+the joints. Handing them a tool rather than a worksheet meant a valve geometry could be
+verified in seconds, and it gave the team one shared reference so everyone was checking
+against the same math.</p>
 <h2 id="why-it-mattered">Why it mattered</h2>
 <p>The tool turned line sizing into a trade study rather than a guess. It is also what made
 the diagnosis on <a href="clementine.html">Project Clementine</a> immediate: when the measured GN2
@@ -320,6 +330,74 @@ are correct for the liquid propellant runs, but the high-pressure GN2 side is be
 described with compressibility and choked flow limits accounted for,</p>
 <p><div class="math-display">$$\frac{p^{*}}{p_{0}} = \left(\frac{2}{\gamma+1}\right)^{\frac{\gamma}{\gamma-1}} \approx 0.528 \quad (\gamma = 1.4)$$</div></p>
 <p>so that the tool covers the pressurant side with the same rigor as the propellant side.</p></div>
+  
+  <section class="figures">
+    <figure><img src="assets/images/sizing-tool/poppet-verification.jpg" alt=""><figcaption>The poppet-valve verification tool I built for the team: hoop stress, force balance, and thread shear.</figcaption></figure>
+  </section>
+  
+</section>
+
+<section class="printproj">
+  <header>
+    <span class="tag">RD-01</span>
+    <h1>Supplier Cost-Benefit Analysis &amp; Validation</h1>
+    <p class="proj-sub">Materials sourcing for 3D-printed dental prosthetics</p>
+    <dl class="titleblock">
+      <div><dt>Role</dt><dd>Engineering Research &amp; Development Intern</dd></div>
+      <div><dt>Organization</dt><dd>Spectrum Killian Dental Lab Alliance (SKDLA)</dd></div>
+      <div><dt>Period</dt><dd>Jul 2025 - Oct 2025</dd></div>
+    </dl>
+  </header>
+  
+  
+  <div class="prose"><h2 id="the-problem">The problem</h2>
+<p>The lab bought a consumable staining material for its 3D-printed dental prosthetics from an
+established supplier, at a price that had never been challenged. An alternative supplier
+offered a comparable material for less. But a lower sticker price is not a decision:
+switching a production material puts product quality at risk, and for a patient-facing
+medical product quality cannot be allowed to regress. My task was to determine, with
+evidence, whether the alternative was genuinely equivalent and genuinely worth adopting.</p>
+<h2 id="constraints">Constraints</h2>
+<ul>
+<li><strong>Quality could not regress.</strong> The end product is worn by patients. A cost saving that
+  compromised quality was not a saving.</li>
+<li><strong>A live production environment.</strong> Any test had to run without disrupting the
+  technicians' ongoing work.</li>
+<li><strong>A decision that had to survive scrutiny.</strong> The recommendation would drive real spend,
+  so it had to be defensible to the technicians who use the material and the management who
+  pay for it.</li>
+<li><strong>Proprietary boundaries.</strong> Supplier terms and internal costs were confidential, so the
+  work had to be documented in a way that captured the method without exposing specifics.</li>
+</ul>
+<h2 id="approach">Approach</h2>
+<p>I treated it as a trade study, not a price comparison. I built the cost side from total
+cost of use rather than unit price alone, so that anything the cheaper material might cost
+elsewhere, in waste, rework, or slower processing, would show up rather than hide. On the
+performance side, I defined what "equivalent quality" had to mean in measurable terms
+before running anything, so the result could not be argued with after the fact.</p>
+<h2 id="what-i-delivered">What I delivered</h2>
+<ul>
+<li>A <strong>side-by-side validation test</strong> that I organized and led, putting the current material
+  and the alternative in front of both the technicians who apply it and the management who
+  judge the result, under the same conditions. Structuring it as a direct comparison made
+  the outcome evidence rather than opinion.</li>
+<li>A <strong>comparative report</strong> that laid cost and quality out together and made a clear
+  recommendation. This is what the sourcing decision was actually made on.</li>
+<li><strong>Standard operating procedures and test protocols</strong>, so the change could be adopted
+  consistently across multiple technicians instead of living in one person's head.</li>
+</ul>
+<h2 id="result">Result</h2>
+<p>The alternative met the quality bar in the side-by-side, and the analysis showed it cut
+material cost by more than 30%, into six figures of projected annual savings. The lab
+adopted it, and the SOPs meant the switch held up across the whole team rather than
+depending on who was working that day.</p>
+<h2 id="what-i-took-from-it">What I took from it</h2>
+<p>The habit I built here is the one I now use on propulsion hardware: decide what "good
+enough" has to mean, in measurable terms, before you run the test, and build the cost case
+from total cost of use rather than the number on the invoice. The cheapest or
+highest-performing option on paper is frequently not the right selection once the full
+picture is in. It is the same discipline behind how I approach component selection on a
+fluid system.</p></div>
   
 </section>
 

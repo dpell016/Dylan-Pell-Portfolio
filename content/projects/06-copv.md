@@ -7,7 +7,7 @@ role: General Member
 org: Highlander Space Program, UC Riverside
 period: 2024 - 2025
 status: complete
-order: 5
+order: 6
 featured: true
 summary: >
   Designed two bulkheads and a drill jig in SolidWorks to cap a small test pressure

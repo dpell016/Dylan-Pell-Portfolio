@@ -63,6 +63,14 @@ implicit Colebrook equation:</p>
 <p>Summed to a system total, which sets the tank pressure required to deliver the design
 inlet condition at the injector:</p>
 <p><div class="math-display">$$p_{\text{tank}} = p_{\text{injector}} + \sum \Delta p$$</div></p>
+<h2 id="a-verification-tool-for-the-poppet-valves">A verification tool for the poppet valves</h2>
+<p>Alongside the feed-system sizing, I built a second automated calculator for the teammates
+designing our poppet pneumatic valves, so they could check their own work as they went. It
+runs the three checks that decide whether a valve body holds pressure and actuates as
+intended: hoop stress in the body, a force balance across the poppet, and thread shear at
+the joints. Handing them a tool rather than a worksheet meant a valve geometry could be
+verified in seconds, and it gave the team one shared reference so everyone was checking
+against the same math.</p>
 <h2 id="why-it-mattered">Why it mattered</h2>
 <p>The tool turned line sizing into a trade study rather than a guess. It is also what made
 the diagnosis on <a href="clementine.html">Project Clementine</a> immediate: when the measured GN2
@@ -76,6 +84,12 @@ described with compressibility and choked flow limits accounted for,</p>
 <p>so that the tool covers the pressurant side with the same rigor as the propellant side.</p></div>
 
   
+  <section class="figures">
+    
+    <figure><img src="assets/images/sizing-tool/poppet-verification.jpg" alt="The poppet-valve verification tool I built for the team: hoop stress, force balance, and thread shear."><figcaption>The poppet-valve verification tool I built for the team: hoop stress, force balance, and thread shear.</figcaption></figure>
+    
+  </section>
+  
 
   
   <ul class="skills"><li>Python</li><li>MATLAB</li><li>Fluid mechanics</li><li>Trade studies</li><li>Design automation</li></ul>
@@ -83,7 +97,7 @@ described with compressibility and choked flow limits accounted for,</p>
 
   <nav class="pager">
     <a href="poseidon.html">&larr; Project Poseidon</a>
-    <a href="drill-jig.html">Bulkhead Drill Jig &rarr;</a>
+    <a href="skdla.html">Supplier Cost-Benefit Analysis &amp; Validation &rarr;</a>
   </nav>
 </main>
 
