@@ -34,8 +34,9 @@ pressure, so there is no separate pressurization system to design. Moving to liq
 oxygen removes that convenience. LOX has to be pushed, which means the whole
 pressurization architecture becomes something I had to design rather than inherit.
 
-The P&ID was a collaborative effort across the fluids team, but it was mainly my work and
-my responsibility. I sized the lines, calculated the pressure drops, and made sure the
+I led the P&ID and did the bulk of the design myself, with the wider fluids team
+contributing as the work came together. I sized the lines, calculated the pressure drops,
+and made sure the
 system delivered pressure and flow where they needed to go. I selected the pneumatics,
 valves, and regulators, set the pressure schedule, defined the interfaces between the
 pressurization, propellant, and ignition subsystems, presented the updates to the team
