@@ -16,7 +16,6 @@ skills:
   - Systems trade studies
   - Power systems
   - Technical proposal writing
-hero: lspace/hero.jpg
 ---
 
 ## Scope

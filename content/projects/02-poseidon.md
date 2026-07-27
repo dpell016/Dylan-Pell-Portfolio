@@ -42,8 +42,8 @@ images:
 
 Poseidon was UC Riverside's first liquid bipropellant rocket. Nothing existed to inherit:
 no prior feed system, no validated pressure vessel, no established test procedure. As
-Lead Fluid Systems Engineer I owned the pressure vessel and the integrated fuel and
-oxidizer feed system, from analysis through fabrication and test.
+Lead Fluid Systems Engineer I built the pressure vessel and the integrated fuel and
+oxidizer feed system, and validated them through the test campaign.
 
 ## Constraints
 
@@ -106,8 +106,8 @@ design inlet condition rather than whatever the plumbing happened to deliver.
 
 ## What I built
 
-The pressure vessel, which I built and fabricated: structural analysis, CAD iteration, and
-coordination with manufacturing until it was real hardware. Then the integrated fuel and
+The pressure vessel, which I built and fabricated, coordinating with manufacturing until
+it was real hardware. Then the integrated fuel and
 oxidizer feed system, assembling and validating the feed lines, valves, and interfaces
 that connected tanks to engine.
 

@@ -3,10 +3,9 @@
 Copy files to these exact paths. Rebuild (`python3 build.py`) and they appear.
 Until then the site shows a dashed placeholder naming the missing file.
 
-clementine/hero.jpg            wide shot of the test wall or the P&ID
+clementine/hero.jpg            the fluid wall as it is now
 clementine/pid.jpg             the P&ID itself
-clementine/test-wall.jpg       system installed on the wall
-clementine/regulators.jpg      spring + dome regulator pair
+clementine/test-wall.jpg       drafting the layout on a plank of wood
 
 poseidon/hero.jpg              best single Poseidon image
 poseidon/pressure-vessel.jpg   vessel during or after fabrication
@@ -24,8 +23,6 @@ drill-jig/drilled-vessel.jpg   drilled bulkhead interface
 fsae-upright/iteration-1.jpg   first design iteration (SolidWorks)
 fsae-upright/iteration-2.jpg   second iteration
 fsae-upright/iteration-3.jpg   final, best iteration (also used as the hero image)
-
-lspace/hero.jpg                team or presentation photo
 
 copv/hero.jpg                  best single COPV image
 copv/bulkheads.jpg             the two bulkheads (CAD render or machined parts)
