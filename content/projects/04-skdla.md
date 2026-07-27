@@ -11,9 +11,9 @@ order: 4
 featured: true
 summary: >
   Ran a cost-benefit analysis of an alternative supplier's materials for 3D-printed dental
-  prosthetics, led a side-by-side validation test that confirmed quality, and wrote the
-  SOPs to make the switch repeatable. The analysis drove the sourcing decision and cut
-  material cost by more than 30%, into six figures of projected annual savings.
+  prosthetics and led a side-by-side validation test confirming the alternative met quality
+  standards. The analysis quantified more than a 30% material cost reduction, six figures in
+  projected annual savings, and drove the sourcing decision.
 skills:
   - Cost-benefit analysis
   - Trade studies
@@ -64,10 +64,12 @@ before running anything, so the result could not be argued with after the fact.
 
 ## Result
 
-The alternative met the quality bar in the side-by-side, and the analysis showed it cut
-material cost by more than 30%, into six figures of projected annual savings. The lab
-adopted it, and the SOPs meant the switch held up across the whole team rather than
-depending on who was working that day.
+The alternative met the quality bar in the side-by-side, and the analysis put a number on
+the opportunity: more than a 30% material cost reduction, into six figures of projected
+annual savings. The lab ultimately chose not to switch suppliers, but that call was made on
+evidence rather than assumption, which was the point of the work. The standard operating
+procedures I wrote outlasted the question, giving the team a repeatable way to evaluate a
+material change across technicians.
 
 ## What I took from it
 
