@@ -10,11 +10,11 @@ status: complete
 order: 2
 featured: true
 summary: >
-  Built and fabricated the pressure vessel and built and validated the integrated feed
+  Built the pressure vessel and designed, built, and validated the integrated feed
   system for UCR's first liquid bipropellant rocket. First place for Most Efficient
   Liquid Engine at the 2025 FAR-OUT competition; 7,340 ft flight.
 skills:
-  - Pressure vessel design
+  - Pressure vessel fabrication
   - Structural analysis
   - Feed system integration
   - Cold flow and static fire testing
@@ -42,8 +42,8 @@ images:
 
 Poseidon was UC Riverside's first liquid bipropellant rocket. Nothing existed to inherit:
 no prior feed system, no validated pressure vessel, no established test procedure. As
-Lead Fluid Systems Engineer I built the pressure vessel and the integrated fuel and
-oxidizer feed system, and validated them through the test campaign.
+Lead Fluid Systems Engineer I built the pressure vessel, and I designed, built, and
+validated the integrated fuel and oxidizer feed system.
 
 ## Constraints
 
@@ -70,9 +70,10 @@ architecture, which became [Project Clementine](clementine.html).
 
 ### Sizing the pressure vessel
 
-The vessel was analyzed as a thin-walled cylinder, valid where the radius to thickness
-ratio is greater than about 10. Under internal pressure the wall carries a hoop stress
-and an axial stress,
+I did not originate the vessel's structural analysis, but I double-checked it before we
+committed to building the hardware. The vessel was analyzed as a thin-walled cylinder,
+valid where the radius to thickness ratio is greater than about 10. Under internal
+pressure the wall carries a hoop stress and an axial stress,
 
 $$ \sigma_{h} = \frac{p r}{t}, \qquad \sigma_{a} = \frac{p r}{2 t} $$
 
