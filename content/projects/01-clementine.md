@@ -21,11 +21,9 @@ skills:
 hero: clementine/hero.jpg
 images:
   - file: clementine/pid.jpg
-    caption: The P&ID I developed for the program's LOX and ethanol system.
+    caption: The LOX and ethanol P&ID, which I was mainly responsible for developing.
   - file: clementine/test-wall.jpg
-    caption: The system installed on the fluids test wall.
-  - file: clementine/regulators.jpg
-    caption: Spring regulator setting the dome-loaded regulator.
+    caption: Drafting the fluid wall layout on a plank of wood, before the real build.
 ---
 
 ## The problem
@@ -36,11 +34,13 @@ pressure, so there is no separate pressurization system to design. Moving to liq
 oxygen removes that convenience. LOX has to be pushed, which means the whole
 pressurization architecture becomes something I had to design rather than inherit.
 
-This was my project. The P&ID belongs to Highlander Space Program, and my teammates
-advised me along the way, but the design work was mine: selecting the pneumatics, valves,
-and regulators, setting the pressure schedule, defining the interfaces between the
-pressurization, propellant, and ignition subsystems, and installing the result on our
-fluids test wall.
+The P&ID was a collaborative effort across the fluids team, but it was mainly my work and
+my responsibility. I sized the lines, calculated the pressure drops, and made sure the
+system delivered pressure and flow where they needed to go. I selected the pneumatics,
+valves, and regulators, set the pressure schedule, defined the interfaces between the
+pressurization, propellant, and ignition subsystems, presented the updates to the team
+every week, and installed the result on our fluids test wall. The P&ID itself belongs to
+Highlander Space Program.
 
 ## Constraints
 

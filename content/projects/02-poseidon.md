@@ -10,8 +10,8 @@ status: complete
 order: 2
 featured: true
 summary: >
-  Co-designed and fabricated the pressure vessel and built and validated the integrated
-  feed system for UCR's first liquid bipropellant rocket. First place for Most Efficient
+  Built and fabricated the pressure vessel and built and validated the integrated feed
+  system for UCR's first liquid bipropellant rocket. First place for Most Efficient
   Liquid Engine at the 2025 FAR-OUT competition; 7,340 ft flight.
 skills:
   - Pressure vessel design
@@ -29,7 +29,7 @@ results:
     value: 7,340 ft
 images:
   - file: poseidon/pressure-vessel.jpg
-    caption: The pressure vessel I co-designed and fabricated.
+    caption: The pressure vessel I built and fabricated.
   - file: poseidon/feed-system.jpg
     caption: Integrated fuel and oxidizer feed system.
   - file: poseidon/static-fire.jpg
@@ -106,7 +106,7 @@ design inlet condition rather than whatever the plumbing happened to deliver.
 
 ## What I built
 
-The pressure vessel, co-designed and fabricated: structural analysis, CAD iteration, and
+The pressure vessel, which I built and fabricated: structural analysis, CAD iteration, and
 coordination with manufacturing until it was real hardware. Then the integrated fuel and
 oxidizer feed system, assembling and validating the feed lines, valves, and interfaces
 that connected tanks to engine.
