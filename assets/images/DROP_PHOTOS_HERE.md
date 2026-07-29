@@ -3,7 +3,7 @@
 Copy files to these exact paths. Rebuild (`python3 build.py`) and they appear.
 Until then the site shows a dashed placeholder naming the missing file.
 
-clementine/hero.jpg            the fluid wall as it is now
+clementine/hero.jpg            the fluid wall partway through assembly
 clementine/pid-draft-5.png     rough P&ID draft, iteration 5
 clementine/pid-draft-6.png     rough P&ID draft, iteration 6
 clementine/pid-draft-7.png     rough P&ID draft, iteration 7

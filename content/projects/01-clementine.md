@@ -19,7 +19,7 @@ skills:
   - Instrumentation and DAQ
   - Hazard analysis
 hero: clementine/hero.jpg
-hero_caption: The completed LOX and ethanol fluid wall.
+hero_caption: The LOX and ethanol fluid wall, partway through assembly.
 images:
   - file: clementine/pid-draft-5.png
     caption: An early draft of the P&ID, iteration 5.
