@@ -46,6 +46,13 @@ a:hover { color: var(--cryo); }
   border-bottom: 1px solid var(--rule);
   padding: 68px 0 44px;
 }
+.masthead-top { display: flex; align-items: center; gap: 24px; margin: 0 0 22px; }
+.headshot {
+  width: 92px; height: 92px; flex-shrink: 0;
+  border-radius: 50%; object-fit: cover; border: 1px solid var(--rule);
+}
+.masthead-id { min-width: 0; }
+.masthead-id .role { margin-bottom: 0; }
 .eyebrow {
   font-family: var(--mono);
   font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
@@ -223,6 +230,8 @@ figcaption { font-family: var(--mono); font-size: 12px; color: var(--steel); mar
 /* ---------- responsive ---------- */
 @media (max-width: 680px) {
   body { font-size: 16px; }
+  .masthead-top { gap: 16px; }
+  .headshot { width: 72px; height: 72px; }
   .node { grid-template-columns: 52px 1fr; gap: 16px; }
   .bubble { width: 44px; height: 44px; }
   .bubble .tag { font-size: 9px; }

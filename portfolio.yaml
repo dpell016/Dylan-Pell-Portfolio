@@ -3,6 +3,7 @@ role: Mechanical Engineering · Liquid Propulsion & Fluid Systems
 location: Los Angeles, CA
 email: d.pell016@gmail.com
 linkedin: https://www.linkedin.com/in/dylan-pell
+headshot: headshot.png   # small photo beside the name in the masthead; clear to hide it
 # phone intentionally omitted from this public portfolio; it stays on the resume only.
 site_url: ""   # PDF cover URL. Fill in (https://dylanpellportfolio.com) once the
                # domain resolves and HTTPS works, then rebuild --pdf. Left blank so the

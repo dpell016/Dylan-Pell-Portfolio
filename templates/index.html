@@ -4,9 +4,14 @@
 
 <header class="masthead">
   <div class="wrap">
-    <p class="eyebrow">Engineering Portfolio</p>
-    <h1>{{ cfg.name }}</h1>
-    <p class="role">{{ cfg.role }}</p>
+    <div class="masthead-top">
+      {% if cfg.headshot_ok %}<img class="headshot" src="assets/images/{{ cfg.headshot }}" alt="{{ cfg.name }}">{% endif %}
+      <div class="masthead-id">
+        <p class="eyebrow">Engineering Portfolio</p>
+        <h1>{{ cfg.name }}</h1>
+        <p class="role">{{ cfg.role }}</p>
+      </div>
+    </div>
     <p class="thesis">{{ cfg.thesis }}</p>
     <ul class="contact">
       <li>{{ cfg.location }}</li>

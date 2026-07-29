@@ -96,6 +96,9 @@ def load_projects():
 
 def build(render_pdf=False):
     cfg = yaml.safe_load((ROOT / "portfolio.yaml").read_text(encoding="utf-8"))
+    # Show the masthead headshot only if the file is actually there (graceful).
+    hs = cfg.get("headshot")
+    cfg["headshot_ok"] = bool(hs and (ASSETS / "images" / hs).exists())
     projects = load_projects()
     print(f"  found {len(projects)} projects")
 
