@@ -20,11 +20,11 @@ skills:
   - Hazard analysis
 hero: clementine/hero.jpg
 images:
-  - file: clementine/pid-draft-5.jpg
+  - file: clementine/pid-draft-5.png
     caption: An early draft of the P&ID, iteration 5.
-  - file: clementine/pid-draft-6.jpg
+  - file: clementine/pid-draft-6.png
     caption: Iteration 6.
-  - file: clementine/pid-draft-7.jpg
+  - file: clementine/pid-draft-7.png
     caption: Iteration 7, as the architecture converged.
   - file: clementine/test-wall.jpg
     caption: Drafting the fluid wall layout on a plank of wood, before the real build.
