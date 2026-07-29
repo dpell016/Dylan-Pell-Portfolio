@@ -47,7 +47,7 @@
   <div class="prose">{{ p.body_html|safe }}</div>
   {% if p.images %}
   <section class="figures">
-    {% for img in p.images %}<figure><img src="assets/images/{{ img.file }}" alt=""><figcaption>{{ img.caption }}</figcaption></figure>{% endfor %}
+    {% for img in p.images %}<figure><img src="assets/images/{{ img.file }}" alt=""><figcaption><span class="fig-num">Figure {{ loop.index }}.</span> {{ img.caption }}</figcaption></figure>{% endfor %}
   </section>
   {% endif %}
 </section>

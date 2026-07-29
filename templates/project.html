@@ -38,7 +38,7 @@
   {% if p.images %}
   <section class="figures">
     {% for img in p.images %}
-    <figure><img src="assets/images/{{ img.file }}" alt="{{ img.caption }}"><figcaption>{{ img.caption }}</figcaption></figure>
+    <figure><img src="assets/images/{{ img.file }}" alt="{{ img.caption }}"><figcaption><span class="fig-num">Figure {{ loop.index }}.</span> {{ img.caption }}</figcaption></figure>
     {% endfor %}
   </section>
   {% endif %}

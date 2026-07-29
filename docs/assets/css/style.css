@@ -206,6 +206,7 @@ figure img {
   border: 1px solid var(--rule); background: var(--surface);
 }
 figcaption { font-family: var(--mono); font-size: 12px; color: var(--steel); margin-top: 8px; }
+.fig-num { color: var(--navy); font-weight: 500; }
 .figures { margin: 40px 0; }
 
 /* placeholder shown until a photo is added */
