@@ -20,8 +20,12 @@ skills:
   - Hazard analysis
 hero: clementine/hero.jpg
 images:
-  - file: clementine/pid.jpg
-    caption: The LOX and ethanol P&ID, which I was mainly responsible for developing.
+  - file: clementine/pid-draft-5.jpg
+    caption: An early draft of the P&ID, iteration 5.
+  - file: clementine/pid-draft-6.jpg
+    caption: Iteration 6.
+  - file: clementine/pid-draft-7.jpg
+    caption: Iteration 7, as the architecture converged.
   - file: clementine/test-wall.jpg
     caption: Drafting the fluid wall layout on a plank of wood, before the real build.
 ---
