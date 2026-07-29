@@ -19,6 +19,7 @@ skills:
   - Trade studies
   - Design automation
 hero: sizing-tool/hero.jpg
+hero_caption: Tool output for tank and line sizing with pressure-drop calculations.
 images:
   - file: sizing-tool/poppet-verification.jpg
     caption: "The poppet-valve verification tool I built for the team: hoop stress, force balance, and thread shear."

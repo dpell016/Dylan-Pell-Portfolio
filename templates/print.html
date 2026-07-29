@@ -40,14 +40,14 @@
       <div><dt>Period</dt><dd>{{ p.period }}</dd></div>
     </dl>
   </header>
-  {% if p.hero_exists %}<figure class="hero"><img src="assets/images/{{ p.hero }}" alt=""></figure>{% endif %}
+  {% if p.hero_exists %}<figure class="hero"><img src="assets/images/{{ p.hero }}" alt=""><figcaption><span class="fig-num">Figure 1.</span> {{ p.hero_caption }}</figcaption></figure>{% endif %}
   {% if p.results %}
   <dl class="results">{% for r in p.results %}<div><dt>{{ r.label }}</dt><dd>{{ r.value }}</dd></div>{% endfor %}</dl>
   {% endif %}
   <div class="prose">{{ p.body_html|safe }}</div>
   {% if p.images %}
   <section class="figures">
-    {% for img in p.images %}<figure><img src="assets/images/{{ img.file }}" alt=""><figcaption><span class="fig-num">Figure {{ loop.index }}.</span> {{ img.caption }}</figcaption></figure>{% endfor %}
+    {% for img in p.images %}<figure><img src="assets/images/{{ img.file }}" alt=""><figcaption><span class="fig-num">Figure {{ loop.index + 1 if p.hero_exists else loop.index }}.</span> {{ img.caption }}</figcaption></figure>{% endfor %}
   </section>
   {% endif %}
 </section>

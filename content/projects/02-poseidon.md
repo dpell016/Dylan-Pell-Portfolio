@@ -20,6 +20,7 @@ skills:
   - Cold flow and static fire testing
   - Design for manufacture
 hero: poseidon/hero.jpg
+hero_caption: Poseidon on the launch rail before flight.
 results:
   - label: Competition result
     value: 1st place, Most Efficient Liquid Engine

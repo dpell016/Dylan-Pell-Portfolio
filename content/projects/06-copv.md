@@ -20,6 +20,7 @@ skills:
   - Composite layup
   - Design for manufacture
 hero: copv/hero.jpg
+hero_caption: Assembling the COPV test vessel.
 images:
   - file: copv/bulkheads.jpg
     caption: The two bulkheads I designed in SolidWorks to cap the test vessel.

@@ -22,7 +22,7 @@
   </dl>
 
   {% if p.hero_exists %}
-  <figure class="hero"><img src="assets/images/{{ p.hero }}" alt="{{ p.title }}"></figure>
+  <figure class="hero"><img src="assets/images/{{ p.hero }}" alt="{{ p.title }}"><figcaption><span class="fig-num">Figure 1.</span> {{ p.hero_caption }}</figcaption></figure>
   {% elif p.hero %}
   <div class="ph hero-ph"><span>Drop a photo at</span><code>assets/images/{{ p.hero }}</code></div>
   {% endif %}
@@ -38,7 +38,7 @@
   {% if p.images %}
   <section class="figures">
     {% for img in p.images %}
-    <figure><img src="assets/images/{{ img.file }}" alt="{{ img.caption }}"><figcaption><span class="fig-num">Figure {{ loop.index }}.</span> {{ img.caption }}</figcaption></figure>
+    <figure><img src="assets/images/{{ img.file }}" alt="{{ img.caption }}"><figcaption><span class="fig-num">Figure {{ loop.index + 1 if p.hero_exists else loop.index }}.</span> {{ img.caption }}</figcaption></figure>
     {% endfor %}
   </section>
   {% endif %}

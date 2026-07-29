@@ -18,6 +18,7 @@ skills:
   - Geometric tolerancing
   - Rapid turnaround
 hero: drill-jig/hero.jpg
+hero_caption: The drill jig (blue) clamped on the pressure vessel.
 images:
   - file: drill-jig/jig.jpg
     caption: The finished drill jig.
