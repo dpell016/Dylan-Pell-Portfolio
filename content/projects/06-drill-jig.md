@@ -7,7 +7,7 @@ role: Designer and machinist
 org: Highlander Space Program, UC Riverside
 period: 2025
 status: complete
-order: 5
+order: 6
 featured: true
 summary: >
   Designed and manufactured a drill jig overnight to locate the bulkhead holes on the

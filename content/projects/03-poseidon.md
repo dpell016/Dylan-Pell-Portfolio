@@ -7,7 +7,7 @@ role: Lead Fluid Systems Engineer
 org: Highlander Space Program, UC Riverside
 period: 2025 - 2026
 status: complete
-order: 2
+order: 3
 featured: true
 summary: >
   Built the pressure vessel and designed, built, and validated the integrated feed

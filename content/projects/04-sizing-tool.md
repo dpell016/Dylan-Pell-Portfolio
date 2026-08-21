@@ -7,7 +7,7 @@ role: Author
 org: Highlander Space Program, UC Riverside
 period: 2025 - Present
 status: active
-order: 3
+order: 4
 featured: true
 summary: >
   Automated the fluid system sizing calculation so the team could iterate designs from

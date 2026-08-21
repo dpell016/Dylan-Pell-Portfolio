@@ -9,6 +9,10 @@ clementine/pid-draft-6.png     rough P&ID draft, iteration 6
 clementine/pid-draft-7.png     rough P&ID draft, iteration 7
 clementine/test-wall.jpg       drafting the layout on a plank of wood
 
+turbopump/hero.jpg             a CAD render (impeller or full assembly)
+turbopump/impeller.jpg         impeller render
+turbopump/assembly.jpg         pump assembly render
+
 poseidon/hero.jpg              best single Poseidon image
 poseidon/pressure-vessel.jpg   vessel during or after fabrication
 poseidon/feed-system.jpg       assembled feed system

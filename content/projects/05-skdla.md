@@ -7,7 +7,7 @@ role: Engineering Research & Development Intern
 org: Spectrum Killian Dental Lab Alliance (SKDLA)
 period: Jul 2025 - Oct 2025
 status: complete
-order: 4
+order: 5
 featured: true
 summary: >
   Ran a cost-benefit analysis of an alternative supplier's materials for 3D-printed dental
