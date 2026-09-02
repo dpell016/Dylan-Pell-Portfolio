@@ -22,7 +22,7 @@
 
 <main class="wrap">
   <h1 class="proj-title">Project Turbopump</h1>
-  <p class="proj-sub">Electric-driven propellant pumps to replace pressure-fed feed</p>
+  <p class="proj-sub">Electric-drive propellant pumps, from first principles to first prints</p>
 
   <dl class="titleblock">
     <div><dt>Role</dt><dd>Sole designer</dd></div>
@@ -37,91 +37,116 @@
 
   <div class="prose"><h2 id="the-problem">The problem</h2>
 <p><a href="clementine.html">Project Clementine</a> is pressure-fed: high-pressure GN2 pushes on the LOX
-and ethanol to drive them through the system. It works, but the gas and the vessels that
-hold it are dead weight, and tank pressure caps how hard I can run the engine. I wanted to
-know if I could pump instead. Two small electric-motor-driven pumps, one for LOX and one
-for ethanol, that add the pressure actively rather than carrying it as stored gas. That is
-the electric turbopump idea, and in the last few years it has gone from exotic to
-flight-proven. So I started a project of my own, branched it off Clementine, and worked
-backward from the engine: an 8.8 kN ethanol/LOX engine running 600 psig chamber pressure.</p>
+and ethanol to move them through the system. It works, but the gas and the vessels that hold
+it are dead weight, and tank pressure caps how hard I can run the engine. I wanted to know
+if I could pump instead. Two small motor-driven pumps, one per propellant, that add the
+pressure actively instead of storing it. That is the electric pump-fed idea, the one Rocket
+Lab flies on Rutherford, and I wanted to see if I could design it myself. So I started a
+personal project, branched it off Clementine, and worked backward from the engine: an 8.8 kN
+ethanol/LOX engine running 600 psig chamber pressure.</p>
+<p>One point of precision, because a good reviewer will check it: a "turbopump" strictly means
+a pump spun by a turbine. What I designed is the pump end, which is identical either way,
+driven by an electric motor for now. Turbine drive is a planned later phase. I keep the name
+Project Turbopump because that is where it is headed.</p>
 <h2 id="constraints">Constraints</h2>
 <ul>
 <li><strong>First principles, alone.</strong> No team, no inherited design. If I could not derive a number
-  and point to a source, I did not use it.</li>
+  and cite where the method came from, I did not use it.</li>
 <li><strong>Cryogenic oxygen service.</strong> LOX is not water. Material compatibility, cavitation, and
-  cleanliness all come with it, held to oxygen-service standards.</li>
-<li><strong>Buildable and testable by one person</strong> on a student budget. I wanted hardware I could
-  actually machine and validate, not a report that ends at a render.</li>
-<li><strong>A documented trail, not a clean story.</strong> Every decision, correction, and dead end goes
-  in a logbook as it happens.</li>
+  cleanliness all come with it, held to oxygen-service standards (CGA G-4.1, ASTM G93).</li>
+<li><strong>Buildable and testable by one student.</strong> The design had to end in parts I could print or
+  machine and actually spin, on a student budget, not a report that stops at a render.</li>
+<li><strong>A logbook, not a highlight reel.</strong> Every decision, correction, and dead end gets written
+  down as it happens. Eighteen sessions and counting.</li>
 </ul>
 <h2 id="deriving-the-requirements">Deriving the requirements</h2>
 <p>Everything starts at the engine. From thrust and specific impulse I worked back to mass
 flow,</p>
 <p><div class="math-display">$$\dot{m} = \frac{F}{I_{sp}\,g_0}$$</div></p>
 <p>and from there to what each pump has to deliver: 441 m of head on the LOX side and 806 m on
-the ethanol, at 1.86 and 1.68 L/s, for 30 to 44 kW of shaft power total. The first useful
-result was not a calculation, it was a catch. My first-principles mass flow disagreed with
-the data sheet I had been handed, and the reason was a units-label error in the sheet. That
-set the rule for the whole project: derive it myself, then trust it.</p>
+the ethanol, which also has to feed the regen jacket, at 1.86 and 1.68 L/s, for 30 to 44 kW
+of shaft power. The first useful result was not a calculation, it was a catch. My
+first-principles mass flow disagreed with the data sheet I was handed, and the reason was a
+units-label error on the sheet: it read lbm/s for a number that was really kg/s. That set
+the rule for the whole project. Derive it myself, then trust it.</p>
 <h2 id="the-architecture-and-why">The architecture, and why</h2>
-<p>Three calls shaped everything after them, and I made each one to defend, not to assume.</p>
-<p><strong>Electric drive, not a gas-generator turbine.</strong> A real turbopump is spun by burning
-propellant. For one person to build and control, an electric motor is far simpler, and it
-is flight-proven now, so I get the simplicity without the hand-waving.</p>
+<p>Three calls shaped everything downstream, and I made each to defend, not to assume.</p>
+<p><strong>Electric drive, not a gas-generator turbine.</strong> A real turbopump burns propellant to spin a
+turbine. For one person to build and control, a motor is far simpler, and it flies now, so I
+get the simplicity without the hand-waving. The pump end carries straight over to a turbine
+later, so nothing here is wasted.</p>
 <p><strong>Two independent pumps, one per propellant,</strong> instead of one shaft driving both. LOX and
-ethanol want different speeds and behave differently. Splitting them removes a whole class
+ethanol want different speeds and behave differently, and splitting them kills a whole class
 of compromise.</p>
-<p><strong>No inducer.</strong> My NPSH analysis showed saturated LOX at ambient tank pressure gives
-negative suction margin: the pump would flash to vapor at the inlet before it did any work.
-The textbook fix is an inducer, a little screw ahead of the impeller, and it is also the
-highest-risk, hardest-to-machine part in the pump. Instead of adding it to buy the margin
-back, I turned the finding into a hard requirement: pad the LOX tank to 3 to 4 bar. That
-fixes it upstream and lets me delete the riskiest part.</p>
+<p><strong>No inducer.</strong> My NPSH analysis was the make-or-break of the project. LOX comes in at
+90.2 K, which is its boiling point at one atmosphere, so at ambient tank pressure the suction
+margin is actually negative and the pump would flash to vapor before it did any work. The
+textbook fix is an inducer, a little screw ahead of the impeller, and it is also the hardest
+part to machine. Instead of adding it, I turned the finding into a hard requirement, pad the
+LOX tank to 3 to 4 bar, and deleted the riskiest part of the pump. I spent tank pressure to
+buy the margin back.</p>
 <h2 id="the-lox-pump">The LOX pump</h2>
 <p>The first-cut LOX impeller is a 20,000 rpm, 83.6 mm semi-open centrifugal wheel: six blades,
-25° backsweep, Wiesner slip factor, and an eye sized to hold off cavitation, closing
-self-consistently to the 441 m of head the engine needs. The number that scared me was
-axial thrust: 7.8 kN trying to shove the rotor into its housing. I brought it down to about
-300 N with a wear ring and balance holes, and checked the shaft for 3.3x rotordynamic
-margin so it runs well below its first critical speed. The whole pump is parametric CAD in
-Python (CadQuery), so all five parts regenerate from the inputs and export to STEP and STL.
-Change one number and the pump redraws.</p>
+25 degrees of backsweep, Wiesner slip, and an inlet eye sized to hold off cavitation,
+closing self-consistently to the 441 m the engine needs. I went semi-open because a closed
+impeller with 1.4 mm internal passages is neither machinable nor inspectable at student
+level, and inspectable matters when the oxygen-cleanliness rules make me verify every wetted
+surface.</p>
+<p>The number that scared me was axial thrust, near-discharge pressure on the back of the
+impeller trying to shove the rotor into its housing. My first pass put it around 8 kN. A
+later self-audit against my sizing tool caught that I had integrated the pressure over the
+wrong radius, and the real figure is closer to 15 kN. Either way the fix holds: a back wear
+ring plus six balance holes bleed the back face down and drop the residual to a few hundred
+newtons, which an angular-contact bearing pair carries easily. I sized the shaft for a first
+bending critical near 66,000 rpm, a 3.3x margin over running speed.</p>
+<p>The whole pump is parametric CAD in Python (CadQuery), so every part regenerates from the
+inputs and exports to STEP and STL. Change one number and the pump redraws. I also built a
+pump sizing tool in a spreadsheet, a few hundred live formulas, that runs the entire chain
+from engine data to impeller geometry, cavitation margin, and the minimum tank pressure, and
+flags when a design lands in the un-machinable corner. It reproduces this pump exactly, and I
+can point it at any pump I design next.</p>
 <h2 id="where-the-design-fought-back">Where the design fought back</h2>
-<p>This is the part I most want to show, because it is where the engineering actually
-happened.</p>
+<p>This is the part I most want to show, because it is where the engineering actually happened.</p>
 <ul>
 <li><strong>The ethanol pump passed every analysis, then failed at the drawing board.</strong> On paper it
-  closed. In geometry, its low specific speed drove the impeller exit width down to 0.7 mm,
-  the classic low-Ns pathology, where the passage gets too narrow to machine or to flow
-  cleanly. I did not force it. I laid out three escape routes, spin it faster, split it into
-  two stages, or switch pump type, and gated the choice on which motor I could actually buy.</li>
-<li><strong>I found a hundred-dollar motor that looked perfect and rejected it.</strong> A power-balance check,
-  <span class="math-inline">$P = \tau\,\omega$</span>, put it about 200 times undersized. The useful part was not the
-  rejection, it was the one-line shopping rule I pulled out of it, so I can size any motor
-  candidate before spending a cent. The real target is 8 to 9 N·m continuous, an
-  eVTOL-class 15 to 25 kW inrunner.</li>
-<li><strong>I corrected my own work more than once.</strong> Re-optimizing the impeller eye invalidated a
-  blade wrap angle I had already called done, so I redid it, 150° to 201°. A self-review of
-  my first CAD caught a volute sized 2.6x too big for the flow, fixed in v1.</li>
-<li><strong>A design review challenged my blade count.</strong> Instead of defending it, I ran it against
-  Pfleiderer's criterion, found the challenge was partly right, and queued a splitter-blade
-  experiment rather than win the argument on the spot.</li>
+  closed. In geometry, its very low specific speed drove the impeller exit width to 0.7 mm,
+  too narrow to machine or to flow cleanly. I did not force it. I laid out three escape
+  routes, spin it faster, split it into two stages, or switch to a partial-emission design,
+  and gated the choice on which motor I can actually buy.</li>
+<li><strong>I found a cheap motor that looked perfect and rejected it.</strong> A hundred-dollar NEMA 17,
+  until a power-balance check, <span class="math-inline">$P = \tau\,\omega$</span>, showed it was about 200 times undersized.
+  The useful part was the one-line rule I pulled out of it, so now I can size any motor
+  before spending a cent. The real target is 8 to 9 N·m continuous, an eVTOL-class inrunner.</li>
+<li><strong>I keep catching my own work with a second method.</strong> Re-optimizing the inlet eye
+  invalidated a blade wrap angle I had already called done, so I redid it. A self-review of
+  the first CAD caught a volute sized 2.6 times too big for the flow. And the thrust-radius
+  error above came out of auditing the design doc against my sizing tool. None of them
+  shipped, because I check every number twice.</li>
+<li><strong>The first 3D prints caught three bugs the math never would have.</strong> When I printed the
+  parts and dry-fit them, I found a discharge bore that stopped just short of breaking
+  through the casing wall and pointed against the swirl, a bearing housing I had never
+  actually modeled, and the worst one: the impeller perched on its own blade tips because I
+  had cut a flat pocket floor against blades that taper from 8 mm tall at the eye to 1.4 mm
+  at the rim. In a semi-open pump the stationary wall has to be contoured to the blade
+  profile; it is part of the flow passage, not a lid. All three are fixed in the current CAD.
+  Holding the part in your hand finds what the screen hides.</li>
 </ul>
 <h2 id="validation">Validation</h2>
-<p>I cannot hot-fire a LOX pump in a garage, so I wrote a water-similarity test program to
-prove the design safely. It runs the pump on water and scales the results with the affinity
-laws, collapsing head and flow onto their dimensionless coefficients, <span class="math-inline">$\psi$</span> and <span class="math-inline">$\phi$</span>, so
-that water data predicts LOX behavior. Staged the right way it needs only about 4% of full
-power, the same trick ESA and published LOX/methane electric-pump programs use to de-risk on
-the bench. I sized and priced the whole rig at roughly 600 to 1,100 dollars in parts, with
-abort criteria and containment written in from the start.</p>
+<p>I cannot hot-fire a LOX pump in a garage, so I wrote a water-similarity test program to prove
+the design safely. It runs the pump on water and scales the results with the affinity laws,
+collapsing head and flow onto their dimensionless coefficients so that water data predicts
+the LOX behavior. Staged the right way it needs only about 4% of full power, the same route
+ESA and published LOX/methane electric-pump programs use to de-risk on the bench. I wrote the
+procedure with abort criteria and containment from the start, and priced the whole rig at
+roughly 600 to 1,100 dollars in parts.</p>
 <h2 id="status-and-what-is-next">Status and what is next</h2>
-<p>I am keeping this honest about where it stands. The LOX pump and its test program are done
-on paper and in CAD. The ethanol pump has one open architecture decision waiting on which
-motor I source. Nothing is built yet. Next is buying the drive, machining the first parts,
-and running Stage A on water. Every number traces to a derivation and every decision to a
-logbook entry, so this is built to be picked up and pushed forward, not admired as finished.</p></div>
+<p>I am keeping this honest about where it stands. The LOX pump design, the sizing tool, and the
+test program are done, and I have the first 3D-printed parts in hand and dry-fitting, which
+is where the last three bugs came from. Nothing is in metal yet, and the ethanol pump has one
+open decision waiting on which motor I source. Next is sourcing the drive, correcting the
+prints, machining the first aluminum, and running the water test. Every number traces to a
+derivation and every decision to a logbook entry, so this is built to be picked up and pushed
+forward, not admired as finished.</p></div>
 
   
 
