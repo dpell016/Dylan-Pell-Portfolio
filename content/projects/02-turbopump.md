@@ -46,10 +46,6 @@ Project Turbopump because that is where it is headed.
   and cite where the method came from, I did not use it.
 - **Cryogenic oxygen service.** LOX is not water. Material compatibility, cavitation, and
   cleanliness all come with it, held to oxygen-service standards (CGA G-4.1, ASTM G93).
-- **Buildable and testable by one student.** The design had to end in parts I could print or
-  machine and actually spin, on a student budget, not a report that stops at a render.
-- **A logbook, not a highlight reel.** Every decision, correction, and dead end gets written
-  down as it happens. Eighteen sessions and counting.
 
 ## Deriving the requirements
 
@@ -110,7 +106,7 @@ from engine data to impeller geometry, cavitation margin, and the minimum tank p
 flags when a design lands in the un-machinable corner. It reproduces this pump exactly, and I
 can point it at any pump I design next.
 
-## Where the design fought back
+## Problems I caught and fixed
 
 This is the part I most want to show, because it is where the engineering actually happened.
 
